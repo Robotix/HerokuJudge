@@ -2,7 +2,6 @@ Django==1.6.5
 Mako==0.5.0
 MarkupSafe==0.15
 MySQL-python==1.2.4b4
-PAM==0.4.2
 PIL==1.1.7
 PyYAML==3.10
 Pygments==1.4

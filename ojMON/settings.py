@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = ['yourappname.herokuapp.com']
+ALLOWED_HOSTS = ['ojmon.herokuapp.com']
 
 
 # Application definition

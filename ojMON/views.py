@@ -18,7 +18,7 @@ def status_false(request):
     return HttpResponse(f,content_type='text/plain; charset=utf8')
 
 def submitPage(request):
-    return HttpResponse('home.html')
+    return render_to_response('home.html')
 
 def submit(request):
     if request.method == 'GET':

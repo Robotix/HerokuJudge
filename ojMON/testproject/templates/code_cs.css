@@ -1,0 +1,115 @@
+body
+{
+	font-size: 16px;
+	font-family: "Whitney SSm A","Whitney SSm B",verdana,"Lucida Grande",sans-serif;
+}
+h2
+{
+	font-weight: bolder;
+	font-size: 60px;
+	color: white;
+}
+#one p 
+{
+	padding-top: 20px;
+	font-weight: normal;
+	font-size: 30px;
+	color: white;
+}
+h3 
+{
+	font-family: "Whitney SSm A","Whitney SSm B",verdana,"Lucida Grande",sans-serif;
+	font-size: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-shadow: 1px 1px 2px gray;
+}
+#header
+{
+	position: 100%;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	background: #39424e;
+	-webkit-font-smoothing: antialiased;
+}
+#header ul 
+{
+	list-style: none;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 50px;
+}
+#header ul li 
+{
+	display: inline-block;
+	color: #ffffff;
+	padding: 10px;
+	font-size: 16px;
+}
+#content
+{
+	width: 100%;
+	padding-top: 150px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
+#box 
+{
+	width: 60%;
+background: #fff;
+border: 1px solid #c2c7d0;
+margin-bottom: 20px;
+padding-top: 40px;
+padding-bottom: 40px;
+padding-left: 20px;
+padding-bottom: 40px;
+border-radius: 5px;
+margin-top: 20px;
+}
+#content a 
+{
+	color: #39424e;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 30px;
+	width: 100%;
+	height: auto;
+}
+#content a:hover, #content a:active
+{
+	text-decoration: none;
+	text-shadow: 1px 0px 1px gray;
+	-webkit-transition-property: all;
+	-webkit-transition-duration: 0.5s;
+	-moz-transition-property: all;
+	-moz-transition-duration: 0.5s;
+	-o-transition-property: all;
+	-o-transition-duration: 0.5s;
+	-ms-transition-property: all;
+	-ms-transition-duration: 0.5s;
+	transition-property: all;
+	transition-duration: 0.5s;
+}
+#but 
+{
+	padding: 0px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #ddd;
+	list-style: none;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+.check 
+{
+	display: inline-block;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-bottom: 20px;
+	border-bottom: 3px solid transparent;
+	cursor: pointer;
+}
+#c1 
+{
+	margin-left: 10%;
+	margin-right: 10px;
+}

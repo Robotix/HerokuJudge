@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>My online judge</title>
+    </head>
+
+    <body>
+         <form role="form" method="GET" action="/submit/" align="center">
+         {% csrf_token %}
+        <label for="selectId" class=" control-label">Lang</label>
+        
+        <select id="selectId" name="lang">
+            <option name="c++">C++</option>
+            <option name="c">C  </option>
+            <option name="java">JAVA</option>
+        </select>
+        <br>
+        <textarea class="input-large" name="source" rows="30" cols="80">
+        </textarea><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+    </form>
+    </body>
+</html>
+    

@@ -70,6 +70,9 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SOCIAL_AUTH_PIPELINE = (
+'social.pipeline.social_auth.social_details',
+'social.pipeline.social_auth.social_uid',
+'social.pipeline.social_auth.auth_allowed',
 'social_auth.backends.pipeline.social.social_auth_user',
 'social_auth.backends.pipeline.associate.associate_by_email',
 'social_auth.backends.pipeline.misc.save_status_to_session',
@@ -77,6 +80,7 @@ SOCIAL_AUTH_PIPELINE = (
 'social_auth.backends.pipeline.social.associate_user',
 'social_auth.backends.pipeline.social.load_extra_data',
 'social_auth.backends.pipeline.user.update_user_details',
+'social_auth.backends.pipeline.misc.save_status_to_session',
 )
 
 LOGIN_URL          = '/landingPage/'
@@ -94,6 +98,7 @@ FACEBOOK_API_SECRET					= '80584bb5bf55d84bd8d61f9b2e7ffd62'
 GOOGLE_OAUTH2_CLIENT_ID				= '948756394788-hq2uule75a585h7ivk7raei301dppiah.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET			= '-xfOIxciKMxPiH-KSjZYlg6o '
 
+SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 # SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
 # SOCIAL_AUTH_UID_LENGTH = 16
 # SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16

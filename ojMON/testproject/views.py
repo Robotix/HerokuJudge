@@ -21,7 +21,7 @@ class AuthComplete(View):
             return complete(request, backend, *args, **kwargs)
         except:
             messages.error(request, "Your Google Apps domain isn't authorized for this app")
-            return HttpResponseRedirect(reverse('login'))
+            return HttpResponseRedirect('/login-error/')
  
  
 class LoginError(View):

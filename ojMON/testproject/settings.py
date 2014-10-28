@@ -75,11 +75,11 @@ AUTHENTICATION_BACKENDS = (
    'django.contrib.auth.backends.ModelBackend',
 )
 
-FACEBOOK_APP_ID 					= '596534703784377'
-FACEBOOK_API_SECRET					= '80584bb5bf55d84bd8d61f9b2e7ffd62'
+SOCIAL_AUTH_FACEBOOK_KEY            = '596534703784377'
+SOCIAL_AUTH_FACEBOOK_SECRET         = '80584bb5bf55d84bd8d61f9b2e7ffd62'
 
-GOOGLE_OAUTH2_CLIENT_ID				= '948756394788-hq2uule75a585h7ivk7raei301dppiah.apps.googleusercontent.com'
-GOOGLE_OAUTH2_CLIENT_SECRET			= '-xfOIxciKMxPiH-KSjZYlg6o '
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY       = '948756394788-hq2uule75a585h7ivk7raei301dppiah.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET    = '-xfOIxciKMxPiH-KSjZYlg6o '
 
 LOGIN_REDIRECT_URL = '/'
 

@@ -44,7 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'solutions',
     'testResults',
-    'social_auth',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,11 +56,33 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+   'django.contrib.auth.context_processors.auth',
+   'django.core.context_processors.debug',
+   'django.core.context_processors.i18n',
+   'django.core.context_processors.media',
+   'django.core.context_processors.static',
+   'django.core.context_processors.tz',
+   'django.contrib.messages.context_processors.messages',
+   'social.apps.django_app.context_processors.backends',
+   'social.apps.django_app.context_processors.login_redirect',
+)
+
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.google.GoogleOAuth2',
+   'social.backends.twitter.TwitterOAuth',
+   'django.contrib.auth.backends.ModelBackend',
+)
+
 FACEBOOK_APP_ID 					= '596534703784377'
 FACEBOOK_API_SECRET					= '80584bb5bf55d84bd8d61f9b2e7ffd62'
 
 GOOGLE_OAUTH2_CLIENT_ID				= '948756394788-hq2uule75a585h7ivk7raei301dppiah.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET			= '-xfOIxciKMxPiH-KSjZYlg6o '
+
+LOGIN_REDIRECT_URL = '/'
+
 
 ROOT_URLCONF = 'testproject.urls'
 

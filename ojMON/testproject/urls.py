@@ -12,4 +12,6 @@ urlpatterns = patterns('',
     url(r'^$',homePage),
     url(r'^submit/$',submit),
     url(r'^landingPage/$',landingPage),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
 )

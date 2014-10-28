@@ -1,6 +1,6 @@
 --allow-unverified PIL
 Django==1.6.5
-django-social-auth
+python-social-auth
 dj-database-url==0.3.0
 dj-static==0.0.6
 gunicorn==19.1.1

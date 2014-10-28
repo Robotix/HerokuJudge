@@ -20,7 +20,8 @@ def status_false(request):
 
 def homePage(request):
     context = RequestContext(request,
-                           {'user': request.user})
+                           {'request': request,
+                            'user': request.user})
     return render_to_response('code_1.html',
                              context_instance=context)
 

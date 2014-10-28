@@ -11,6 +11,7 @@ from testResults.models import testResults
 
 from django.core.urlresolvers import reverse
 from django.views.generic.base import View
+from social_auth.backends import get_backend
 from social_auth.backends.exceptions import AuthFailed
 from social_auth.views import complete
  

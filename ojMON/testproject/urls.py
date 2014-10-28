@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from testproject.views import status_false, homePage, submit, result, landingPage 
+from testproject.views import status_false, homePage, submit, result, AuthComplete, LoginError 
 
 from django.contrib import admin
 admin.autodiscover()

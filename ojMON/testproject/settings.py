@@ -97,6 +97,7 @@ FACEBOOK_API_SECRET					= '80584bb5bf55d84bd8d61f9b2e7ffd62'
 
 GOOGLE_OAUTH2_CLIENT_ID				= '948756394788-hq2uule75a585h7ivk7raei301dppiah.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET			= '-xfOIxciKMxPiH-KSjZYlg6o '
+GOOGLE_WHITE_LISTED_DOMAINS = ['https://agile-tundra-5528.herokuapp.com']
 
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 # SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'

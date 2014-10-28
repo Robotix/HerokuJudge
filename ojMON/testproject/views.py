@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import auth, messages
+from django.template.context import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
 from solutions.models import sol

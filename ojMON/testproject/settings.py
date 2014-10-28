@@ -56,42 +56,11 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.twitter.TwitterBackend',
-    'social_auth.backends.facebook.FacebookBackend',
-    'social_auth.backends.google.GoogleOAuthBackend',
-    'social_auth.backends.google.GoogleOAuth2Backend',
-    'social_auth.backends.google.GoogleBackend',
-    'social_auth.backends.yahoo.YahooBackend',
-    'social_auth.backends.contrib.github.GithubBackend',
-    'social_auth.backends.contrib.yahoo.YahooOAuthBackend',
-    'social_auth.backends.OpenIDBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
-LOGIN_REDIRECT_URL = '/'
-
-SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
-SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
-
 FACEBOOK_APP_ID 					= '596534703784377'
 FACEBOOK_API_SECRET					= '80584bb5bf55d84bd8d61f9b2e7ffd62'
 
 GOOGLE_OAUTH2_CLIENT_ID				= '948756394788-hq2uule75a585h7ivk7raei301dppiah.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET			= '-xfOIxciKMxPiH-KSjZYlg6o '
-GOOGLE_WHITE_LISTED_DOMAINS         = ['https://agile-tundra-5528.herokuapp.com']
-
-SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
-# SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
-# SOCIAL_AUTH_UID_LENGTH = 16
-# SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
-# SOCIAL_AUTH_NONCE_SERVER_URL_LENGTH = 16
-# SOCIAL_AUTH_ASSOCIATION_SERVER_URL_LENGTH = 16
-# SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-)
 
 ROOT_URLCONF = 'testproject.urls'
 

@@ -9,25 +9,6 @@ from django.views.decorators.csrf import csrf_exempt
 from solutions.models import sol
 from testResults.models import testResults
 
-from django.core.urlresolvers import reverse
-from django.views.generic.base import View
-from social_auth.views import complete
- 
- 
-class AuthComplete(View):
-    def get(self, request, *args, **kwargs):
-        backend = kwargs.pop('backend')
-        try:
-            return complete(request, backend, *args, **kwargs)
-        except:
-            messages.error(request, "Your Google Apps domain isn't authorized for this app")
-            return HttpResponseRedirect('/login-error/')
- 
- 
-class LoginError(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse(status=401)
-
 def result(request):
     f = open("result.txt","r")
     return HttpResponse(f,content_type='text/plain; charset=utf8')
@@ -37,7 +18,10 @@ def status_false(request):
     return HttpResponse(f,content_type='text/plain; charset=utf8')
 
 def homePage(request):
-    return render_to_response('code_1.html')
+    context = RequestContext(request,
+                           {'user': request.user})
+    return render_to_response('code_1.html',
+                             context_instance=context)
 
 def landingPage(request):
     return render_to_response('landcode.html')

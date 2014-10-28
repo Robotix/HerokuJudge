@@ -11,8 +11,6 @@ from testResults.models import testResults
 
 from django.core.urlresolvers import reverse
 from django.views.generic.base import View
-from social_auth.backends import get_backend
-from social_auth.backends.exceptions import AuthFailed
 from social_auth.views import complete
  
  
@@ -21,7 +19,7 @@ class AuthComplete(View):
         backend = kwargs.pop('backend')
         try:
             return complete(request, backend, *args, **kwargs)
-        except AuthFailed:
+        except:
             messages.error(request, "Your Google Apps domain isn't authorized for this app")
             return HttpResponseRedirect(reverse('login'))
  

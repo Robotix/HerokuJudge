@@ -69,9 +69,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-LOGIN_URL          = '/landingPage/'
-LOGIN_REDIRECT_URL = '/landingPage/'
-LOGIN_ERROR_URL    = '/'
+LOGIN_REDIRECT_URL = '/'
 
 SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'

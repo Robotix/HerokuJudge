@@ -5,15 +5,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'testproject.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^result/$', result),
     url(r'^status/fail$', status_false),
     url(r'^$',homePage),
     url(r'^submit/$',submit),
-    url(r'^landingPage/$',landingPage),
+    url(r'^complete/(?P<backend>[^/]+)/$', AuthComplete.as_view()),
+     url(r'^login-error/$', LoginError.as_view()),
     url(r'', include('social_auth.urls')),
 )

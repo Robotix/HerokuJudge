@@ -3,11 +3,31 @@ from django.http import *
 from django.shortcuts import render_to_response
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
 from solutions.models import sol
 from testResults.models import testResults
+
+from django.core.urlresolvers import reverse
+from django.views.generic.base import View
+from social_auth.backends.exceptions import AuthFailed
+from social_auth.views import complete
+ 
+ 
+class AuthComplete(View):
+    def get(self, request, *args, **kwargs):
+        backend = kwargs.pop('backend')
+        try:
+            return complete(request, backend, *args, **kwargs)
+        except AuthFailed:
+            messages.error(request, "Your Google Apps domain isn't authorized for this app")
+            return HttpResponseRedirect(reverse('login'))
+ 
+ 
+class LoginError(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse(status=401)
 
 def result(request):
     f = open("result.txt","r")

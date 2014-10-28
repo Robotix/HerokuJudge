@@ -76,14 +76,12 @@ LOGIN_ERROR_URL    = '/'
 SOCIAL_AUTH_COMPLETE_URL_NAME  = 'socialauth_complete'
 SOCIAL_AUTH_ASSOCIATE_URL_NAME = 'socialauth_associate_complete'
 
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
-
 FACEBOOK_APP_ID 					= '596534703784377'
 FACEBOOK_API_SECRET					= '80584bb5bf55d84bd8d61f9b2e7ffd62'
 
 GOOGLE_OAUTH2_CLIENT_ID				= '948756394788-hq2uule75a585h7ivk7raei301dppiah.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET			= '-xfOIxciKMxPiH-KSjZYlg6o '
-GOOGLE_WHITE_LISTED_DOMAINS = ['https://agile-tundra-5528.herokuapp.com']
+GOOGLE_WHITE_LISTED_DOMAINS         = ['https://agile-tundra-5528.herokuapp.com']
 
 SOCIAL_AUTH_USERNAME_IS_FULL_EMAIL = True
 # SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'

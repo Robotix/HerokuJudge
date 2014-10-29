@@ -26,7 +26,11 @@ def homePage(request):
                              context_instance=context)
 
 def landingPage(request):
-    return render_to_response('landcode.html')
+    context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+    return render_to_response('landcode.html',
+                            context_instance=context)
 
 def submit(request):
     if request.method == 'GET':

@@ -29,6 +29,9 @@
 				<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">
 					<img src="http://i.stack.imgur.com/ZW4QC.png" width="200px"; >
 				</a>
+				<a href="{% url 'social:begin' 'github' %}?next={{ request.path }}">
+					Github
+				</a>
 				<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">
 					<img src="https://developers.google.com/+/images/branding/sign-in-buttons/Red-signin_Long_base_44dp.png" width="200px">
 				</a>

@@ -73,6 +73,7 @@ AUTHENTICATION_BACKENDS = (
    'social.backends.google.GoogleOAuth2',
    'social.backends.twitter.TwitterOAuth',
    'social.backends.github.GithubOAuth2',
+   'social.backends.disqus.DisqusOAuth2',
    'django.contrib.auth.backends.ModelBackend',
 )
 

@@ -96,6 +96,19 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY       = '948756394788-hq2uule75a585h7ivk7raei301dppiah.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET    = '-xfOIxciKMxPiH-KSjZYlg6o '
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile'
+]
+
+SOCIAL_AUTH_GOOGLE_PLUS_IGNORE_DEFAULT_SCOPE = True
+SOCIAL_AUTH_GOOGLE_PLUS_SCOPE = [
+    'https://www.googleapis.com/auth/plus.login',
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile'
+]
+
 SOCIAL_AUTH_GITHUB_KEY = '243fa799f9edaf058ce7'
 SOCIAL_AUTH_GITHUB_SECRET = 'bb039a7372abb84923889d2ac4a934e98faa76ab'
 SOCIAL_AUTH_GITHUB_SCOPE = ['email']

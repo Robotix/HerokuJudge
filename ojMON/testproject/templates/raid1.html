@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>RAID 1</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" type="text/css" href="/templates/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/templates/code_cs.css">
+    </head>
+
+    <body>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="/templates/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                document.getElementById("yo1").style.borderColor="black";
+                document.getElementById("c2").style.visibility="hidden";
+                $("#yo1").click(function(){
+                    document.getElementById("yo1").style.borderColor="black";
+                    document.getElementById("yo2").style.borderColor="transparent";
+                    document.getElementById("c1").style.visibility="visible";
+                    document.getElementById("c2").style.visibility="hidden";
+                })
+                $("#yo2").click(function(){
+                    document.getElementById("yo2").style.borderColor="black";
+                    document.getElementById("yo1").style.borderColor="transparent";
+                    document.getElementById("c2").style.visibility="visible";
+                    document.getElementById("c1").style.visibility="hidden";
+                })
+            })
+        </script>
+        <div id="header">
+            <ul>
+                <a href="#landcode.html"><li>Problem Statements</li></a>
+                <a href=""><li>Leaderboard</li></a>
+                <a href=""><li>Submission</li></a>
+            </ul>
+        </div>
+        <div style="padding-top:150px;"></div>
+        <ul id="but">
+            <li class="check" id="yo1">Problem Statement</li>
+            <li class="check" id="yo2">Submission</li>
+        </ul>
+        <div id="c1">
+            Write a code to optimise your strategy to find and destroy enemy bunkers in a jungle.
+            <h4>Description</h4>
+You work with the CIA and are running a military campaign against the terrorists. Your most recent undertaking is a mission to find and destroy enemy bunkers in the african jungles. Each bunker you have to attack has a number of weak points, every one of which has to be attacked to destroy that bunker. Your intelligence has a list of the number of weak points per bunker. You fly out with a helicopter to find and destroy these bunkers in the dense jungle. Your only option however to locate these bunkers is to bomb different spots randomly in the jungle until you hit one of the weak points of a bunker. Write a strategic code that can help you minimise the number of bombs you use to destroy these bunkers.
+
+ 
+
+<h4>Assumptions:</h4>h4>
+The Jungle can be assumed to be spread out over a 2-d array. Each weak point of a bunker occupies one cell. Weak points can be assumed to be located adjacent to each other in a linear fashion, diagonally or in a square/rectangular fashion in the 2-d array.
+
+
+            <h4>Input</h4>
+            The first line would contain an integer n (10 <=  n <= 500) denoting dimension of the square grid.
+        </div>
+        <div id="c2">
+        <form role="form" method="GET" action="/submit/" align="center">
+        <label for="selectId" class=" control-label">Lang</label>
+        
+        <select id="selectId" name="lang">
+            <option name="c++">C++</option>
+            <option name="c">C  </option>
+            <option name="java">JAVA</option>
+        </select>
+
+        <!--<label for="selectProb" class=" control-label">Problem Raid</label>
+        <select id="selectProb" name="prob">
+            <option name="1">1</option>
+            <option name="2">2</option>
+        </select>
+        <label for="team" class=" control-label">Team ID</label>
+        <textarea class="input" name="team" rows="1">
+        </textarea>--><br>
+        <textarea class="input-large" name="source" rows="30" cols="80">
+        </textarea><br>
+        <div style="padding-top:50px;"></div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+    </form></div>
+    </body>
+</html>
+    

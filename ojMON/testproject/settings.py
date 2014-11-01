@@ -128,18 +128,18 @@ WSGI_APPLICATION = 'testproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd166ju7hou5g4v',
-#         'USER': 'suhnybmuyldehf',
-#         'PASSWORD': 'yMyW9pFlnq6eV2v0xoqqT8HLUM',
-#         'HOST': 'ec2-54-243-51-102.compute-1.amazonaws.com',
-#         'PORT': '5432'
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd166ju7hou5g4v',
+        'USER': 'suhnybmuyldehf',
+        'PASSWORD': 'yMyW9pFlnq6eV2v0xoqqT8HLUM',
+        'HOST': 'ec2-54-243-51-102.compute-1.amazonaws.com',
+        'PORT': '5432'
+    }
+}
 
-DATABASES = { 'default': { 'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': 'postgres', 'USER': 'robotix2014', 'PASSWORD': 'robotix2014', 'HOST': 'localhost', 'PORT': '5432' } }
+# DATABASES = { 'default': { 'ENGINE': 'django.db.backends.postgresql_psycopg2', 'NAME': 'postgres', 'USER': 'robotix2014', 'PASSWORD': 'robotix2014', 'HOST': 'localhost', 'PORT': '5432' } }
 
 # Internationalization
 # https://docs.djan,goproject.com/en/1.6/topics/i18n/

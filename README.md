@@ -13,3 +13,8 @@ DATABASES = {
 		'PORT': '5432'
 	}
 }
+
+Install psycopg2 using "pip install psycopg2" and configure it using the above settings.
+Run "python manage.py syncdb" to sync the local database.
+The local server should now run without any errors.
+

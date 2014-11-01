@@ -32,6 +32,13 @@ def landingPage(request):
     return render_to_response('landcode.html',
                             context_instance=context)
 
+def raid1(request):
+    return render_to_response('raid1.html')
+
+
+def raid2(request):
+    return render_to_response('raid2.html')
+
 def submit(request):
     if request.method == 'GET':
         str=request.GET["source"]

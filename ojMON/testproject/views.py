@@ -1,3 +1,4 @@
+# import cv2
 import os, subprocess, Image
 from django.http import *
 from django.shortcuts import render_to_response

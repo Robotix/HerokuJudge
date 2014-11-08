@@ -1,4 +1,7 @@
 <html>
+{% if not user or user.is_anonymous %}
+		<meta http-equiv="refresh" content="0; URL=http://agile-tundra-5528.herokuapp.com/">
+	{% endif %}
 <head>
 	<title>Sudocode</title>
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>

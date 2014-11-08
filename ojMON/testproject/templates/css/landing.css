@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'BigNoodle';
+    src: url('../fonts/big_noodle_titling.ttf');
+}
+body {
+	background: #111;
+}
+#header {
+	padding: 20px;
+	background: #111;
+	min-width: 1280px;
+	overflow: auto;
+	font-family: Arial;
+	color: #fff;
+	background-image: -ms-linear-gradient(top, #303030 0%, #000508 100%);
+	background-image: -moz-linear-gradient(top, #303030 0%, #000508 100%);
+	background-image: -o-linear-gradient(top, #303030 0%, #000508 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #303030), color-stop(1, #000508));
+	background-image: -webkit-linear-gradient(top, #303030 0%, #000508 100%);
+	background-image: linear-gradient(to bottom, #303030 0%, #000508 100%);
+	border-bottom: 1px solid #000;
+}
+#header h1 {
+	font-family: 'BigNoodle';
+	font-size: 30pt;
+	position: absolute;
+	top: 112px;
+	left: 190px;
+	letter-spacing: 2px;
+	display: inline-block;
+}
+#content {
+	padding: 20px;
+	min-width: 1280px;
+	border-top: 1px solid #666;
+	background: #fff;
+}
+#content .prb-holder {
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px #eee;
+	margin-bottom: 20px;
+	font-family: Arial;
+	position: relative;
+}
+#content .prb-holder h2 {
+	padding: 20px;
+	font-family: 'BigNoodle';
+	font-size: 30pt;
+	letter-spacing: 2px;
+	background: #ddd;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+#content .prb-holder .prb-statement {
+	padding: 20px;
+}
+#content .prb-holder .prb-statement .prb-meta {
+	color: #999;
+	font-family: 'BigNoodle';
+	font-size: 18pt;
+	letter-spacing: 2px;
+}
+#footer {
+	width: 540px;
+	margin: 0 auto;
+	padding: 20px 0;
+	overflow: auto;
+}
+#footer .box {
+	display: inline-block;
+	width: 140px;
+	padding: 20px;
+	color: #fff;
+	float: left;
+	font-family: 'BigNoodle';
+}
+#footer .box h2 {
+	font-size: 20pt;
+	letter-spacing: 2px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #333;
+}
+#footer .box ul li {
+	margin-bottom: 15px;
+	font-size: 10pt;
+	display: block;
+}
+#footer .box ul li:hover {
+	border-right: 3px solid #f00;
+}
+#footer .box ul li a:link, #footer .box ul li a:visited {
+	text-decoration: none;
+	color: #666;
+	font-family: Arial;
+	display: inline-block;
+}
+#footer .box ul li a:hover {
+	color: #fff;
+}
+.dash_btn:link, .dash_btn:visited {
+	float: right;
+	text-decoration: none;
+	font-weight: bold;
+	letter-spacing: 2px;
+	display: inline-block;
+	padding: 15px;
+	margin-top: 55px;
+	color: #fff;
+	border-radius: 5px;
+}
+.dash_btn:hover {
+	background: #f90;
+}
+.gen-btn:link, .gen-btn:visited {
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+	color: #fff;
+	padding: 20px;
+	background: #5AA166;
+	text-decoration: none;
+	font-family: 'BigNoodle';
+	letter-spacing: 2px;
+	font-size: 15pt;
+	border-radius: 10px;
+	border: 1px solid #1F3824;
+}
+.gen-btn:hover {
+	background: #1F3824;
+}

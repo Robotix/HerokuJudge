@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'BigNoodle';
+    src: url('../fonts/big_noodle_titling.ttf');
+}
+html {
+	background: url('../assets/bg.jpg') no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+}
+#container {
+	font-family: 'Raleway';
+	background-color:rgba(0,0,0,0.7);
+	height: 100vh;
+}
+#logo {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+#content {
+	width: 900px;
+	margin: 0 auto;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	overflow: auto;
+	background-color:rgba(0,0,0,0.2);
+	border: 1px solid #000;
+}
+#content h1 {
+	font-family: 'BigNoodle';
+	font-weight: 700;
+	font-size: 60pt;
+	color: #06f;
+}
+#content #top {
+	background-color:rgba(0,0,0,0.1);
+	padding: 20px 20px 0 20px; 
+	overflow: auto;
+	border-bottom: 1px solid #000;
+}
+#content #text {
+	color: #f90;
+	padding: 20px;
+	line-height: 1.8em;
+	border-radius: 20px;
+	width: 500px;
+	float: left;
+}
+#content #text p {
+	font-size: 16pt;
+	word-spacing: 2px;
+}
+#content #soclogin {
+	float: left;
+	width: 300px;
+	padding: 20px 20px 20px 20px;
+}
+#content #soclogin h2 {
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 20pt;
+	text-align: center;
+	padding-bottom: 20px;
+}
+#content #soclogin img {
+	float: left;
+	margin-right: 10px;
+}

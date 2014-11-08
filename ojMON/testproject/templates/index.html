@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Sudocode</title>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="/templates/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/templates/css/main.css" />
+</head>
+<body>
+	<div id="container">
+		<div id="content">
+			<div id="top">
+				<img src="/templates/assets/sudocode.png" width="200" style="float: left;" />
+				<img src="/templates/assets/logo.png" width="430" style="float: left; margin-bottom: 15px;" />
+				<h1>Sudocode</h1>
+			</div>
+			<div id="text">
+				<p>
+				Do you have what it takes to eradicate the enemy from the dense jungle? Prove your mettle in the two problem statements of the online coding event by cleaning out the jungles.
+				</p>
+			</div>
+			<div id="soclogin">
+				<h2></h2>
+				{% if user and not user.is_anonymous %}
+					 <meta http-equiv="refresh" content="0; URL=http://agile-tundra-5528.herokuapp.com/landingPage">
+				{% else %}
+					<a href="{% url 'social:begin' 'github' %}?next={{ request.path }}"><img src="/templates/assets/gitlogin.png" width="145" /></a>
+					<a href="{% url 'social:begin' 'disqus' %}?next={{ request.path }}"><img src="/templates/assets/disqlogin.png" width="145" style="margin-right: 0px;" /></a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</body>
+</html>

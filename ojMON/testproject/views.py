@@ -5,6 +5,7 @@ from django.shortcuts import render_to_response
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import auth, messages
+from django.contrib.auth import logout as auth_logout
 from django.template.context import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
@@ -23,22 +24,26 @@ def homePage(request):
     context = RequestContext(request,
                            {'request': request,
                             'user': request.user})
-    return render_to_response('code_1.html',
+    return render_to_response('index.html',
                              context_instance=context)
 
 def landingPage(request):
     context = RequestContext(request,
                            {'request': request,
                             'user': request.user})
-    return render_to_response('landcode.html',
+    return render_to_response('landing.html',
                             context_instance=context)
 
 def raid1(request):
-    return render_to_response('raid1.html')
+    context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+    return render_to_response('problem1.html',
+                            context_instance=context)
 
 
-def raid2(request):
-    return render_to_response('raid2.html')
+# def raid2(request):
+#     return render_to_response('raid2.html')
 
 def submit(request):
     if request.method == 'GET':
@@ -46,10 +51,8 @@ def submit(request):
         p = sol(solution=request.GET["source"],lang=request.GET['lang'],prob=request.GET["prob"],team_id=request.GET["team"])
         p.save()
         if compile(p.id) == True:
-            # if raid1_sim(p.lang)==True:
-            #     return HttpResponseRedirect('/result/')
-            if dummy_tester(p.id) == True:
-                return HttpResponse("Successful submission. Matched with test result")
+            if raid1_sim(p.lang)==True:
+                return HttpResponseRedirect('/result/')
             else:
                 return HttpResponse("Failure I/O")
         else:
@@ -167,3 +170,11 @@ def dummy_tester(num):
         if m.stdout==i.solution:
             return True
     return False
+
+def logout(request):
+    auth_logout(request)
+    context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+    return render_to_response('index.html',
+                             context_instance=context)

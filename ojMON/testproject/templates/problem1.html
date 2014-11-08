@@ -1,0 +1,87 @@
+<html>
+<head>
+	<title>Sudocode | RAID I</title>
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/landing.css" />
+	<link rel="stylesheet" type="text/css" href="css/problem.css" />
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<div id="header">
+		<img src="assets/sudocode.png" width="150" style="float: left;" />
+		<img src="assets/logo.png" width="400" style="float: left; margin-bottom: 15px; margin-left: 20px;" />
+		<h1>Sudocode Dashboard</h1>
+		<a href="{% url 'auth:logout' %}?next=" class="dash_btn">LOGOUT</a>
+		<a href="#" class="dash_btn">LEADERBOARD</a>
+		<a href="#" class="dash_btn">SUBMISSION</a>
+	</div>
+	<div id="content">
+		<ul id="tabs">
+			<li><a href="#" id="ps1">Problem Statement</a></li>
+			<li><a href="#" id="submissions1">Submissions</a></li>
+			<li><a href="#" id="leaderboard1">Leaderboard</a></li>
+			<li style="border-right: none;"><a href="#" id="discussions1">Discussions</a></li>
+		</ul>
+		<div id="ps" class="prb-desc">
+			<p>Write a code to optimise your strategy to find and destroy enemy bunkers in a jungle.</p>
+<h2>Description</h2>
+
+<p>You work with the CIA and are running a military campaign against the terrorists. Your most recent undertaking is a mission to find and destroy enemy bunkers in the african jungles. Each bunker you have to attack has a number of weak points, every one of which has to be attacked to destroy that bunker. Your intelligence has a list of the number of weak points per bunker. You fly out with a helicopter to find and destroy these bunkers in the dense jungle. Your only option however to locate these bunkers is to bomb different spots randomly in the jungle until you hit one of the weak points of a bunker. Write a strategic code that can help you minimise the number of bombs you use to destroy these bunkers.</p>
+<h2>Assumptions</h2>
+
+<p>The Jungle can be assumed to be spread out over a 2-d array. Each weak point of a bunker occupies one cell. Weak points can be assumed to be located adjacent to each other in a linear fashion, diagonally or in a square/rectangular fashion in the 2-d array.</p>
+<h2>Input</h2>
+
+<p>The first line would contain an integer n (10 &lt;= n &lt;= 500) denoting dimension of the square grid.</p>
+		</div>
+		<div id="submissions" class="prb-desc">
+			<span style="font-family: 'BigNoodle'; font-size: 18pt;"><b>LANG</b></span><br /><br />
+			<select>
+				<option value="c">C</option>
+				<option value="cpp">C++</option>
+				<option value="java">JAVA</option>
+			</select>
+			<br />
+			<textarea id="code"></textarea><br />
+			<input type="button" value="SUBMIT" />
+			<input type="button" value="RESET" />
+		</div>
+		<div id="leaderboard" class="prb-desc"></div>
+		<div id="discussions" class="prb-desc"></div>
+	</div>
+	<div id="footer">
+		<div class="box">
+			<h2>EVENTS</h2>
+			<ul>
+				<li><a href="#">Cascade</a></li>
+			    <li><a href="#">Skyfall</a></li>
+			    <li><a href="#">MineField</a></li>
+			    <li><a href="#">StepUp</a></li>
+			    <li><a href="#">AugHit</a></li>
+			    <li><a href="#">Sudocode</a></li>
+			</ul>
+		</div>
+		<div class="box">
+			<h2>CONNECT</h2>
+			<ul>
+    			<li><a href="#">Facebook</a></li>
+			    <li><a href="#">Twitter</a></li>
+			    <li><a href="#">YouTube</a></li>
+			    <li><a href="#">Google+</a></li>
+			    <li><a href="#">contact@robotix.in</a></li>
+			    <li><a href="#">Blog</a></li>
+			    <li><a href="#">Robotix App</a></li>
+			</ul>
+		</div>
+		<div class="box">
+			<h2>ARCHIVE</h2>
+			<ul>
+    			<li><a href="#">ROBOTIX 2014</a></li>
+			    <li><a href="#">ROBOTIX 2013</a></li>
+			</ul>
+		</div>
+	</div>
+	<script src="js/switch.js"></script>
+</body>
+</html>

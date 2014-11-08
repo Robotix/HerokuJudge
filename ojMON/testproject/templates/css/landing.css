@@ -111,7 +111,7 @@ body {
 	border-radius: 5px;
 }
 .dash_btn:hover {
-	background: rgba(17,140,219,1);
+	background: linear-gradient(center top , rgb(46, 200, 102), rgb(41, 179, 91)) repeat scroll 0% 0% rgb(41, 179, 91);
 }
 .gen-btn:link, .gen-btn:visited {
 	position: absolute;
@@ -119,13 +119,13 @@ body {
 	right: 10px;
 	color: #fff;
 	padding: 20px;
-	background: #5AA166;
+	background: linear-gradient(center top , rgb(46, 200, 102), rgb(41, 179, 91)) repeat scroll 0% 0% rgb(41, 179, 91);
+	border-color: rgb(8, 136, 55) rgb(8, 136, 55) rgb(0, 120, 39);
 	text-decoration: none;
 	font-family: 'BigNoodle';
 	letter-spacing: 2px;
 	font-size: 15pt;
 	border-radius: 10px;
-	border: 1px solid #1F3824;
 }
 .gen-btn:hover {
 	background: #1F3824;

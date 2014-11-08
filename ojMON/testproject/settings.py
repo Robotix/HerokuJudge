@@ -43,7 +43,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'solutions',
-    'testResults',
     'social.apps.django_app.default',
 )
 

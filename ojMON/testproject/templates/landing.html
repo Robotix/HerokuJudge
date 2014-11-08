@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/templates/css/landing.css" />
 </head>
 <body>
-	{% if user and not user.is_anonymous %}
+	{% if not user or user.is_anonymous %}
 	{% else %}
 		<meta http-equiv="refresh" content="0; URL=http://agile-tundra-5528.herokuapp.com/">
 	{% endif %}
@@ -40,31 +40,24 @@
 		<div class="box">
 			<h2>EVENTS</h2>
 			<ul>
-				<li><a href="#">Cascade</a></li>
-			    <li><a href="#">Skyfall</a></li>
-			    <li><a href="#">MineField</a></li>
-			    <li><a href="#">StepUp</a></li>
-			    <li><a href="#">AugHit</a></li>
-			    <li><a href="#">Sudocode</a></li>
+				<li><a href="http://www.robotix.in/events/event/cascade">Cascade</a></li>
+			    <li><a href="http://www.robotix.in/events/event/skyfall">Skyfall</a></li>
+			    <li><a href="http://www.robotix.in/events/event/minefield">MineField</a></li>
+			    <li><a href="http://www.robotix.in/events/event/stepup">StepUp</a></li>
+			    <li><a href="http://www.robotix.in/events/event/aughit">AugHit</a></li>
+			    <li><a href="http://www.robotix.in/events/event/sudocode">Sudocode</a></li>
 			</ul>
 		</div>
 		<div class="box">
 			<h2>CONNECT</h2>
 			<ul>
-    			<li><a href="#">Facebook</a></li>
-			    <li><a href="#">Twitter</a></li>
-			    <li><a href="#">YouTube</a></li>
-			    <li><a href="#">Google+</a></li>
-			    <li><a href="#">contact@robotix.in</a></li>
-			    <li><a href="#">Blog</a></li>
-			    <li><a href="#">Robotix App</a></li>
-			</ul>
-		</div>
-		<div class="box">
-			<h2>ARCHIVE</h2>
-			<ul>
-    			<li><a href="#">ROBOTIX 2014</a></li>
-			    <li><a href="#">ROBOTIX 2013</a></li>
+    			<li><a href="https://www.facebook.com/robotixiitkgp">Facebook</a></li>
+			    <li><a href="https://twitter.com/RobotixIITKgp">Twitter</a></li>
+			    <li><a href="https://www.youtube.com/user/RobotixIITkgp?feature=sub_widget_1">YouTube</a></li>
+			    <li><a href="https://plus.google.com/u/0/117481117164748333739/posts">Google+</a></li>
+			    <li><a href="https://mail.google.com/mail/u/0/?ui=2&view=btop&ver=1pxvtfa3uo81z#to%253Dcontact%252540robotix.in%2526cmid%253D1">contact@robotix.in</a></li>
+			    <li><a href="http://blog.robotix.in/">Blog</a></li>
+			    <li><a href="http://www.robotix.in/app/">Robotix App</a></li>
 			</ul>
 		</div>
 	</div>

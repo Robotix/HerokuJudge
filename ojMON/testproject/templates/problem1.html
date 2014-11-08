@@ -8,14 +8,14 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-	{% if user and not user.is_anonymous %}
-	{% else %}
+	{% if not user or user.is_anonymous %}
 		<meta http-equiv="refresh" content="0; URL=http://agile-tundra-5528.herokuapp.com/">
 	{% endif %}
 	<div id="header">
 		<img src="/templates/assets/sudocode.png" width="150" style="float: left;" />
 		<img src="/templates/assets/logo.png" width="400" style="float: left; margin-bottom: 15px; margin-left: 20px;" />
 		<h1>Sudocode Dashboard</h1>
+		Hello {{ user.get_full_name|default:user.username }}!
 		<a href="/logout" class="dash_btn">LOGOUT</a>
 		<a href="#" class="dash_btn">LEADERBOARD</a>
 		<a href="#" class="dash_btn">SUBMISSION</a>
@@ -58,31 +58,24 @@
 		<div class="box">
 			<h2>EVENTS</h2>
 			<ul>
-				<li><a href="#">Cascade</a></li>
-			    <li><a href="#">Skyfall</a></li>
-			    <li><a href="#">MineField</a></li>
-			    <li><a href="#">StepUp</a></li>
-			    <li><a href="#">AugHit</a></li>
-			    <li><a href="#">Sudocode</a></li>
+				<li><a href="http://www.robotix.in/events/event/cascade">Cascade</a></li>
+			    <li><a href="http://www.robotix.in/events/event/skyfall">Skyfall</a></li>
+			    <li><a href="http://www.robotix.in/events/event/minefield">MineField</a></li>
+			    <li><a href="http://www.robotix.in/events/event/stepup">StepUp</a></li>
+			    <li><a href="http://www.robotix.in/events/event/aughit">AugHit</a></li>
+			    <li><a href="http://www.robotix.in/events/event/sudocode">Sudocode</a></li>
 			</ul>
 		</div>
 		<div class="box">
 			<h2>CONNECT</h2>
 			<ul>
-    			<li><a href="#">Facebook</a></li>
-			    <li><a href="#">Twitter</a></li>
-			    <li><a href="#">YouTube</a></li>
-			    <li><a href="#">Google+</a></li>
-			    <li><a href="#">contact@robotix.in</a></li>
-			    <li><a href="#">Blog</a></li>
-			    <li><a href="#">Robotix App</a></li>
-			</ul>
-		</div>
-		<div class="box">
-			<h2>ARCHIVE</h2>
-			<ul>
-    			<li><a href="#">ROBOTIX 2014</a></li>
-			    <li><a href="#">ROBOTIX 2013</a></li>
+    			<li><a href="https://www.facebook.com/robotixiitkgp">Facebook</a></li>
+			    <li><a href="https://twitter.com/RobotixIITKgp">Twitter</a></li>
+			    <li><a href="https://www.youtube.com/user/RobotixIITkgp?feature=sub_widget_1">YouTube</a></li>
+			    <li><a href="https://plus.google.com/u/0/117481117164748333739/posts">Google+</a></li>
+			    <li><a href="https://mail.google.com/mail/u/0/?ui=2&view=btop&ver=1pxvtfa3uo81z#to%253Dcontact%252540robotix.in%2526cmid%253D1">contact@robotix.in</a></li>
+			    <li><a href="http://blog.robotix.in/">Blog</a></li>
+			    <li><a href="http://www.robotix.in/app/">Robotix App</a></li>
 			</ul>
 		</div>
 	</div>

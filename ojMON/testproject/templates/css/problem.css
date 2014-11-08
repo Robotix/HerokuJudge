@@ -17,7 +17,7 @@
 	padding: 15px 30px;
 }
 #tabs li a:hover {
-	background: #f20;
+	background: rgba(51,62,181,1);
 	color: #fff;
 }
 #ps {

@@ -47,6 +47,8 @@ def raid1(request):
 def submit(request):
     if request.method == "POST":
         
+        dir_work = os.path.dirname(os.path.dirname(__file__))
+
         build_cmd = {
             "c": 'gcc main.c -o main -Wall -lm -O2 -std=c99 --static -DONLINE_JUDGE',
             "cpp": 'g++ main.cpp -O2 -Wall -lm --static -DONLINE_JUDGE -o main',
@@ -74,7 +76,7 @@ def submit(request):
         p = subprocess.Popen(
             build_cmd[request.POST['lang']],
             shell=True,
-            cwd="/",
+            cwd=dir_work,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
         err, out = p.communicate()
@@ -96,6 +98,8 @@ def submit(request):
 
 def raid1_sim(language):
     
+    dir_work = os.path.dirname(os.path.dirname(__file__))
+
     img = Image.open("raid1_test.jpg")
     pix = img.load()
 
@@ -111,7 +115,7 @@ def raid1_sim(language):
     p = subprocess.Popen(
         run_cmd[language],
         shell=False,
-        cwd="/",
+        cwd=dir_work,
         stdout=subprocess.PIPE,
         stdin=subprocess.PIPE)
 

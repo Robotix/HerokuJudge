@@ -4,5 +4,5 @@ class sol(models.Model):
     solution = models.TextField()
     lang = models.CharField(max_length=5)
     prob = models.IntegerField()
-    email = EmailField(max_length=254)
+    email = models.EmailField(max_length=254)
     queries =models.IntegerField()

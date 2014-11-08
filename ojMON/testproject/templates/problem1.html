@@ -18,7 +18,6 @@
 		Hello {{ user.get_full_name|default:user.username }}!
 		<a href="/logout" class="dash_btn">LOGOUT</a>
 		<a href="#" class="dash_btn">SUBMISSION</a>
-		<a href="#" class="dash_btn">LEADERBOARD</a>
 		<a href="/landingPage" class="dash_btn">DASHBOARD</a>
 	</div>
 	<div id="content">
@@ -52,7 +51,6 @@
 			</select>
 			<br />
 			<textarea class="input-large" name="source" rows="30" cols="50"><br />
-			<button type="submit" class="btn btn-primary">Submit</button>
 			<input type="button" value="SUBMIT" />
 		</div>
 		<div id="leaderboard" class="prb-desc"></div>

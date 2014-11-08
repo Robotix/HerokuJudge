@@ -72,8 +72,6 @@ def compile(num):
         f = open("Main.java", "w")
     elif language=="PYTHON2":
         f = open("main.py", "w")
-    elif language=="PYTHON3":
-        f = open("main.py", "w")
     
     f.write(sol.objects.get(id=num).solution)
     f.close()
@@ -83,7 +81,6 @@ def compile(num):
         "C++": "g++ main.cpp -O2 -Wall -lm --static -DONLINE_JUDGE -o main",
         "JAVA": "javac Main.java",
         "python2": 'python2 -m py_compile main.py',
-        "python3": 'python3 -m py_compile main.py',
     }
     if language not in build_cmd.keys():
         return False
@@ -115,7 +112,6 @@ def raid1_sim(language):
         "C++": "./main",
         "JAVA": "java -cp Main"
         "PYTHON2": "python2 %s main.pyc"
-        "PYTHON2": "python3 %s __pycache__/main.cpython-33.pyc"
     }
 
     p = subprocess.Popen(

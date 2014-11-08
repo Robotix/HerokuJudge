@@ -10,7 +10,6 @@ from django.template.context import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
 from solutions.models import sol
-from testResults.models import testResults
 
 def result(request):
     f = open("result.txt","r")

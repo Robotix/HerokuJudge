@@ -88,7 +88,7 @@ body {
 	display: block;
 }
 #footer .box ul li:hover {
-	border-right: rgba(10,17,94,1) solid #f00;
+	border-right: 2px solid rgba(19,56,99,1);
 }
 #footer .box ul li a:link, #footer .box ul li a:visited {
 	text-decoration: none;
@@ -97,7 +97,7 @@ body {
 	display: inline-block;
 }
 #footer .box ul li a:hover {
-	color: rgba(17,140,219,1);
+	color: white;
 }
 .dash_btn:link, .dash_btn:visited {
 	float: right;
@@ -111,7 +111,7 @@ body {
 	border-radius: 5px;
 }
 .dash_btn:hover {
-	background: #f90;
+	background: rgba(17,140,219,1);
 }
 .gen-btn:link, .gen-btn:visited {
 	position: absolute;

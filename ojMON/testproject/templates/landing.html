@@ -6,6 +6,10 @@
 	<link rel="stylesheet" type="text/css" href="/templates/css/landing.css" />
 </head>
 <body>
+	{% if user and not user.is_anonymous %}
+	{% else %}
+		<meta http-equiv="refresh" content="0; URL=http://agile-tundra-5528.herokuapp.com/">
+	{% endif %}
 	<div id="header">
 		<img src="/templates/assets/sudocode.png" width="150" style="float: left;" />
 		<img src="/templates/assets/logo.png" width="400" style="float: left; margin-bottom: 15px; margin-left: 20px;" />

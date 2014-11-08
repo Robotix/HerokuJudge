@@ -108,7 +108,7 @@ def raid1_sim(language):
         stdout=subprocess.PIPE,
         stdin=subprocess.PIPE)
 
-    p.stdin.write("%d" % (img.size[0]))
+    p.stdin.write("%d\n" % (img.size[0]))
 
     while True:
         if p.poll() != None:

@@ -78,7 +78,7 @@ def submit(request):
             return HttpResponse(str(err))
 
         queries=raid1_sim(request.POST['lang'])
-
+        print queries
         if queries==0:
             return HttpResponse("Failure in sim")
         else:

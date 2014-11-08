@@ -67,7 +67,10 @@ def submit(request):
             f = open("Main.java", "w")
         elif request.POST['lang']=="python2":
             f = open("main.py", "w")
-    
+        
+        f.write(request.POST['source'])
+        f.close()
+        
         p = subprocess.Popen(
             build_cmd[request.POST['lang']],
             shell=True,
@@ -80,7 +83,7 @@ def submit(request):
         if p.returncode == 0: 
             return HttpResponse(str(err))
 
-        queries=raid1_sim(request.POST['lang'])
+        queries = raid1_sim(request.POST['lang'])
         print "queries = " + str(queries)
         if queries==0:
             return HttpResponse("Failure in sim")

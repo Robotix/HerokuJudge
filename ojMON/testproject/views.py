@@ -55,16 +55,17 @@ def submit(request):
         }
 
         print request.POST['lang']
+
         if request.POST['lang'] not in build_cmd.keys():
             return HttpResponse("Failure in lang")
 
-        if request.POST['lang']=="C":
+        if request.POST['lang']=="c":
             f = open("main.c", "w")
-        elif request.POST['lang']=="C++":
+        elif request.POST['lang']=="cpp":
             f = open("main.cpp", "w")
-        elif request.POST['lang']=="JAVA":
+        elif request.POST['lang']=="java":
             f = open("Main.java", "w")
-        elif request.POST['lang']=="PYTHON2":
+        elif request.POST['lang']=="python2":
             f = open("main.py", "w")
     
         p = subprocess.Popen(
@@ -74,6 +75,8 @@ def submit(request):
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
         err, out = p.communicate()
+
+        print err;
         if p.returncode != 0: 
             return HttpResponse(str(err))
 
@@ -96,10 +99,10 @@ def raid1_sim(language):
     count = 0
     
     run_cmd = {
-        "C": "./main",
-        "C++": "./main",
-        "JAVA": "java -cp Main",
-        "PYTHON2": "python2 %s main.pyc",
+        "c": "./main",
+        "cpp": "./main",
+        "java": "java -cp Main",
+        "python2": "python2 %s main.pyc",
     }
 
     p = subprocess.Popen(
@@ -109,6 +112,7 @@ def raid1_sim(language):
         stdin=subprocess.PIPE)
 
     p.stdin.write("%d\n" % (img.size[0]))
+    p.stdin.flush()
 
     while True:
         if p.poll() != None:

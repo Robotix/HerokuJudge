@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from testproject.views import status_false, homePage, submit, result, landingPage, raid1, raid2, logout
+from testproject.views import status_false, homePage, submit, result, landingPage, raid1, logout
 
 from django.contrib import admin
 admin.autodiscover()

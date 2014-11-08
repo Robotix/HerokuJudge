@@ -45,17 +45,18 @@ def raid1(request):
 #     return render_to_response('raid2.html')
 
 def submit(request):
-    if request.method == "post":
+    if request.method == "POST":
         
         build_cmd = {
-            "C": 'gcc main.c -o main -Wall -lm -O2 -std=c99 --static -DONLINE_JUDGE',
-            "C++": 'g++ main.cpp -O2 -Wall -lm --static -DONLINE_JUDGE -o main',
-            "JAVA": 'javac Main.java',
+            "c": 'gcc main.c -o main -Wall -lm -O2 -std=c99 --static -DONLINE_JUDGE',
+            "cpp": 'g++ main.cpp -O2 -Wall -lm --static -DONLINE_JUDGE -o main',
+            "java": 'javac Main.java',
             "python2": 'python2 -m py_compile main.py',
         }
 
+        print request.POST['lang']
         if request.POST['lang'] not in build_cmd.keys():
-            return HttpResponseRedirect('/status/fail')
+            return HttpResponse("Failure in lang")
 
         if request.POST['lang']=="C":
             f = open("main.c", "w")
@@ -67,29 +68,24 @@ def submit(request):
             f = open("main.py", "w")
     
         p = subprocess.Popen(
-            build_cmd[language],
+            build_cmd[request.POST['lang']],
             shell=True,
-            cwd=dir_work,
+            cwd=os.path.dirname(os.path.abspath(__file__)),
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
         err, out = p.communicate()
-        f.write(err)
-        f.close()
         if p.returncode != 0: 
             return HttpResponse(str(err))
-        
 
-        p = sol(solution=request.POST["source"],lang=request.POST['lang'],email=request.POST['email'])
-        p.save()
-        if compile(p.id) == True:
-            if raid1_sim(p.lang)==True:
-                return HttpResponseRedirect('/result/')
-            else:
-                return HttpResponse("Failure I/O")
+        queries=raid1_sim(request.POST['lang'])
+
+        if queries==0:
+            return HttpResponse("Failure in sim")
         else:
-            p.delete()
-            return HttpResponseRedirect('/status/fail')
-    raise Http404
+            p = sol(solution=request.POST["source"],lang=request.POST['lang'],email=request.user.email)
+            p.save()
+            return HttpResponse(queries)
+    return HttpResponse("Failure in post")
 
 
 def raid1_sim(language):
@@ -98,8 +94,6 @@ def raid1_sim(language):
     pix = img.load()
 
     count = 0
-    
-    result = open("result.txt", "w")
     
     run_cmd = {
         "C": "./main",
@@ -127,7 +121,7 @@ def raid1_sim(language):
             if p.poll() != None:
                 break
             else:    
-                return False
+                return 0
 
         if pix[int(x),int(y)]>200:
             p.stdin.write("YES\n")
@@ -138,9 +132,7 @@ def raid1_sim(language):
         p.stdin.flush()
         count = count +1
 
-    result.write(str(count))
-    result.close()
-    return True
+    return count
 
 def logout(request):
     auth_logout(request)

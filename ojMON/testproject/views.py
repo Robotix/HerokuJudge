@@ -77,7 +77,7 @@ def submit(request):
         err, out = p.communicate()
 
         print err;
-        if p.returncode != 0: 
+        if p.returncode == 0: 
             return HttpResponse(str(err))
 
         queries=raid1_sim(request.POST['lang'])

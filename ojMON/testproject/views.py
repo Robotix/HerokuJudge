@@ -71,7 +71,7 @@ def submit(request):
         p = subprocess.Popen(
             build_cmd[request.POST['lang']],
             shell=True,
-            cwd=os.path.dirname(os.path.abspath(__file__)),
+            cwd="/",
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
         err, out = p.communicate()

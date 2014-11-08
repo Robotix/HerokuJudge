@@ -40,9 +40,10 @@
 <p>The first line would contain an integer n (10 &lt;= n &lt;= 500) denoting dimension of the square grid.</p>
 		</div>
 		<div id="submissions" class="prb-desc">
-		<form role="form" method="GET" action="/submit/" align="center">
+		<form method="post" action="/submit/" enctype="multipart/form-data">
+			{% csrf_token %}
 			<span style="font-family: 'BigNoodle'; font-size: 18pt;"><b>LANG</b></span><br /><br />
-			<select>
+			<select name="lang">
 				<option value="c">C</option>
 				<option value="cpp">C++</option>
 				<option value="java">JAVA</option>

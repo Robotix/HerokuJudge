@@ -45,9 +45,41 @@ def raid1(request):
 #     return render_to_response('raid2.html')
 
 def submit(request):
-    if request.method == 'GET':
-        str=request.GET["source"]
-        p = sol(solution=request.GET["source"],lang=request.GET['lang'],prob=request.GET["prob"],team_id=request.GET["team"])
+    if request.method == "post":
+        
+        build_cmd = {
+            "C": 'gcc main.c -o main -Wall -lm -O2 -std=c99 --static -DONLINE_JUDGE',
+            "C++": 'g++ main.cpp -O2 -Wall -lm --static -DONLINE_JUDGE -o main',
+            "JAVA": 'javac Main.java',
+            "python2": 'python2 -m py_compile main.py',
+        }
+
+        if request.POST['lang'] not in build_cmd.keys():
+            return HttpResponseRedirect('/status/fail')
+
+        if request.POST['lang']=="C":
+            f = open("main.c", "w")
+        elif request.POST['lang']=="C++":
+            f = open("main.cpp", "w")
+        elif request.POST['lang']=="JAVA":
+            f = open("Main.java", "w")
+        elif request.POST['lang']=="PYTHON2":
+            f = open("main.py", "w")
+    
+        p = subprocess.Popen(
+            build_cmd[language],
+            shell=True,
+            cwd=dir_work,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE)
+        err, out = p.communicate()
+        f.write(err)
+        f.close()
+        if p.returncode != 0: 
+            return HttpResponse(str(err))
+        
+
+        p = sol(solution=request.POST["source"],lang=request.POST['lang'],email=request.POST['email'])
         p.save()
         if compile(p.id) == True:
             if raid1_sim(p.lang)==True:
@@ -59,44 +91,6 @@ def submit(request):
             return HttpResponseRedirect('/status/fail')
     raise Http404
 
-def compile(num):
-    
-    dir_work = os.path.dirname(os.path.dirname(__file__))
-    language = sol.objects.get(id=num).lang
-    
-    if language=="C":
-        f = open("main.c", "w")
-    elif language=="C++":
-        f = open("main.cpp", "w")
-    elif language=="JAVA":
-        f = open("Main.java", "w")
-    elif language=="PYTHON2":
-        f = open("main.py", "w")
-    
-    f.write(sol.objects.get(id=num).solution)
-    f.close()
-    
-    build_cmd = {
-        "C": "gcc main.c -o main -Wall -lm -O2 -std=c99 --static -DONLINE_JUDGE",
-        "C++": "g++ main.cpp -O2 -Wall -lm --static -DONLINE_JUDGE -o main",
-        "JAVA": "javac Main.java",
-        "python2": 'python2 -m py_compile main.py',
-    }
-    if language not in build_cmd.keys():
-        return False
-    p = subprocess.Popen(
-        build_cmd[language],
-        shell=True,
-        cwd=dir_work,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE)
-    err, out = p.communicate()
-    f = file("error.txt", "w")
-    f.write(err)
-    f.close()
-    if p.returncode == 0: 
-        return True
-    return False
 
 def raid1_sim(language):
     

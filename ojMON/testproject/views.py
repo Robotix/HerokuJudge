@@ -70,7 +70,7 @@ def submit(request):
         
         f.write(request.POST['source'])
         f.close()
-        
+
         p = subprocess.Popen(
             build_cmd[request.POST['lang']],
             shell=True,
@@ -111,6 +111,7 @@ def raid1_sim(language):
     p = subprocess.Popen(
         run_cmd[language],
         shell=False,
+        cwd="/",
         stdout=subprocess.PIPE,
         stdin=subprocess.PIPE)
 

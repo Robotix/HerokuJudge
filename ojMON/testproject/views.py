@@ -70,6 +70,10 @@ def compile(num):
         f = open("main.cpp", "w")
     elif language=="JAVA":
         f = open("Main.java", "w")
+    elif language=="PYTHON2":
+        f = open("main.py", "w")
+    elif language=="PYTHON3":
+        f = open("main.py", "w")
     
     f.write(sol.objects.get(id=num).solution)
     f.close()
@@ -78,8 +82,8 @@ def compile(num):
         "C": "gcc main.c -o main -Wall -lm -O2 -std=c99 --static -DONLINE_JUDGE",
         "C++": "g++ main.cpp -O2 -Wall -lm --static -DONLINE_JUDGE -o main",
         "JAVA": "javac Main.java",
-        # "python2": 'python2 -m py_compile main.py',
-        # "python3": 'python3 -m py_compile main.py',
+        "python2": 'python2 -m py_compile main.py',
+        "python3": 'python3 -m py_compile main.py',
     }
     if language not in build_cmd.keys():
         return False
@@ -110,6 +114,8 @@ def raid1_sim(language):
         "C": "./main",
         "C++": "./main",
         "JAVA": "java -cp Main"
+        "PYTHON2": "python2 %s main.pyc"
+        "PYTHON2": "python3 %s __pycache__/main.cpython-33.pyc"
     }
 
     p = subprocess.Popen(
@@ -143,32 +149,6 @@ def raid1_sim(language):
     result.write(str(count))
     result.close()
     return True
-
-def dummy_tester(num):
-
-    m=sol.objects.get(id=num)
-    language = m.lang
-    
-    run_cmd = {
-        "C": "./main",
-        "C++": "./main",
-        "JAVA": "java -cp Main"
-    }
-
-    p = subprocess.Popen(
-        run_cmd[language],
-        shell=False,
-        stdout=subprocess.PIPE,
-        stdin=subprocess.PIPE)
-
-    result = p.communicate()[0]
-    m.stdout=result.strip()
-    m.save()
-
-    for i in testResults.objects.all():
-        if m.stdout==i.solution:
-            return True
-    return False
 
 def logout(request):
     auth_logout(request)

@@ -32,7 +32,8 @@ html {
 	font-family: 'BigNoodle';
 	font-weight: 700;
 	font-size: 60pt;
-	color: #06f;
+	color: white;
+	text-shadow:1px 1px 2px black;
 }
 #content #top {
 	background-color:rgba(0,0,0,0.1);

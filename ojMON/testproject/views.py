@@ -110,8 +110,8 @@ def raid1_sim(language):
     run_cmd = {
         "C": "./main",
         "C++": "./main",
-        "JAVA": "java -cp Main"
-        "PYTHON2": "python2 %s main.pyc"
+        "JAVA": "java -cp Main",
+        "PYTHON2": "python2 %s main.pyc",
     }
 
     p = subprocess.Popen(

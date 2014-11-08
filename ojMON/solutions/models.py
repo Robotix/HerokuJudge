@@ -4,5 +4,5 @@ class sol(models.Model):
     solution = models.TextField()
     lang = models.CharField(max_length=5)
     prob = models.IntegerField()
-    team_id = models.IntegerField()
-    stdout =models.TextField(blank=True, null=True)
+    email = EmailField(max_length=254)
+    queries =models.IntegerField()

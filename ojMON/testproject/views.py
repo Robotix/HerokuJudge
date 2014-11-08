@@ -84,7 +84,7 @@ def submit(request):
         else:
             p = sol(solution=request.POST["source"],lang=request.POST['lang'],email=request.user.email)
             p.save()
-            return HttpResponse(queries)
+            return HttpResponse("queries = " + str(queries))
     return HttpResponse("Failure in post")
 
 
@@ -130,7 +130,7 @@ def raid1_sim(language):
             p.stdin.write("NO\n")
         
         p.stdin.flush()
-        count = count +1
+        count = count + 1
 
     return count
 

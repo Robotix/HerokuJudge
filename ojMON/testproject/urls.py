@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from testproject.views import status_false, homePage, submit, result, landingPage, raid1, logout
+from testproject.views import homePage, submit, landingPage, raid1, logout
 
 from django.contrib import admin
 admin.autodiscover()
@@ -7,8 +7,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^result/$', result),
-    url(r'^status/fail$', status_false),
     url(r'^$',homePage),
     url(r'^submt/$',submit),
     url(r'^logout/$',logout),

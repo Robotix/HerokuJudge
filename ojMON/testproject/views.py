@@ -90,7 +90,7 @@ def submit(request):
         if queries==0:
             return HttpResponse("Failure in sim")
         else:
-            p = sol(solution=request.POST["source"],lang=request.POST['lang'],email=request.user.email)
+            p = sol(solution=request.POST["source"],lang=request.POST['lang'],email=request.user.email,queries=queries)
             p.save()
             return HttpResponse("queries = " + str(queries))
     return HttpResponse("Failure in post")

@@ -111,7 +111,13 @@ def raid1_sim(language):
     pix = img.load()
 
     count = 0
-    
+    bunkers = 0
+
+    for i in img.size[0]
+        for j in img.size[1]
+            if pix[i,j]>200
+                bunkers= bunkers +1
+
     run_cmd = {
         "c": "./main",
         "cpp": "./main",
@@ -126,9 +132,8 @@ def raid1_sim(language):
         stdout=subprocess.PIPE,
         stdin=subprocess.PIPE)
 
-    print img.size[0]
-    print img.size[1]
     p.stdin.write("%d\n" % (img.size[0]))
+    p.stdin.write("%d\n" % (bunkers))
     p.stdin.flush()
 
     while True:

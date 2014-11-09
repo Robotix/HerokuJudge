@@ -11,15 +11,9 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
 from solutions.models import sol
 
-def result(request):
-    f = open("result.txt","r")
-    return HttpResponse(f,content_type='text/plain; charset=utf8')
-
-def status_false(request):
-    f = open("error.txt","r")
-    return HttpResponse(f,content_type='text/plain; charset=utf8')
-
 def homePage(request):
+    if request.user.is_authenticated():
+        return redirect('/landingPage')
     context = RequestContext(request,
                            {'request': request,
                             'user': request.user})
@@ -27,6 +21,8 @@ def homePage(request):
                              context_instance=context)
 
 def landingPage(request):
+    if !request.user.is_authenticated():
+        return redirect('/')
     context = RequestContext(request,
                            {'request': request,
                             'user': request.user})
@@ -34,6 +30,8 @@ def landingPage(request):
                             context_instance=context)
 
 def raid1(request):
+    if !request.user.is_authenticated():
+        return redirect('/')
     context = RequestContext(request,
                            {'request': request,
                             'user': request.user})
@@ -117,7 +115,7 @@ def raid1_sim(language):
     p = subprocess.Popen(
         run_cmd[language],
         shell=False,
-        # cwd=dir_work,
+        cwd=dir_work,
         stdout=subprocess.PIPE,
         stdin=subprocess.PIPE)
 
@@ -152,9 +150,4 @@ def raid1_sim(language):
 
 def logout(request):
     auth_logout(request)
-    # context = RequestContext(request,
-    #                        {'request': request,
-    #                         'user': request.user})
-    # return render_to_response('index.html',
-    #                          context_instance=context)
     return HttpResponseRedirect('/')

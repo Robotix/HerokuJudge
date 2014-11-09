@@ -114,7 +114,7 @@ def raid1_sim(language):
 
     p = subprocess.Popen(
         run_cmd[language],
-        shell=False,
+        shell=True,
         cwd=dir_work,
         stdout=subprocess.PIPE,
         stdin=subprocess.PIPE)

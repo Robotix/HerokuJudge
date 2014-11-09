@@ -21,7 +21,7 @@ def homePage(request):
                              context_instance=context)
 
 def landingPage(request):
-    if !request.user.is_authenticated():
+    if not request.user.is_authenticated():
         return redirect('/')
     context = RequestContext(request,
                            {'request': request,

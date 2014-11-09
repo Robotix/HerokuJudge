@@ -13,7 +13,7 @@ from solutions.models import sol
 
 def homePage(request):
     if request.user.is_authenticated():
-        return redirect('/landingPage')
+        return HttpResponseRedirect('/landingPage/')
     context = RequestContext(request,
                            {'request': request,
                             'user': request.user})
@@ -22,7 +22,7 @@ def homePage(request):
 
 def landingPage(request):
     if not request.user.is_authenticated():
-        return redirect('/')
+        return HttpResponseRedirect('/')
     context = RequestContext(request,
                            {'request': request,
                             'user': request.user})
@@ -31,7 +31,7 @@ def landingPage(request):
 
 def raid1(request):
     if not request.user.is_authenticated():
-        return redirect('/')
+        return HttpResponseRedirect('/')
     context = RequestContext(request,
                            {'request': request,
                             'user': request.user})

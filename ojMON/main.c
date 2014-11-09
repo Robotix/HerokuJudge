@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main()
+{
+	int n,i,j;
+	char in[30];
+	scanf("%d",&n);
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			printf("%d %d\n",i,j);
+fflush(stdout);
+			scanf("%s",in);
+		}
+	}
+	return 0;
+}

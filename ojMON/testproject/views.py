@@ -56,8 +56,6 @@ def submit(request):
             "python2": 'python2 -m py_compile main.py',
         }
 
-        print request.POST['lang']
-
         if request.POST['lang'] not in build_cmd.keys():
             return HttpResponse("Failure in lang")
 
@@ -73,6 +71,8 @@ def submit(request):
         f.write(request.POST['source'])
         f.close()
 
+        print "written"
+
         p = subprocess.Popen(
             build_cmd[request.POST['lang']],
             shell=True,
@@ -81,9 +81,11 @@ def submit(request):
             stderr=subprocess.PIPE)
         err, out = p.communicate()
 
-        print err;
-        if p.returncode == 0: 
-            return HttpResponse(str(err))
+        print "compiled"
+
+        print out;
+        if p.returncode != 0: 
+            return HttpResponse(out)
 
         queries = raid1_sim(request.POST['lang'])
         print "queries = " + str(queries)
@@ -114,11 +116,13 @@ def raid1_sim(language):
 
     p = subprocess.Popen(
         run_cmd[language],
-        shell=True,
-        cwd=dir_work,
+        shell=False,
+        # cwd=dir_work,
         stdout=subprocess.PIPE,
         stdin=subprocess.PIPE)
 
+    print img.size[0]
+    print img.size[1]
     p.stdin.write("%d\n" % (img.size[0]))
     p.stdin.flush()
 
@@ -148,8 +152,9 @@ def raid1_sim(language):
 
 def logout(request):
     auth_logout(request)
-    context = RequestContext(request,
-                           {'request': request,
-                            'user': request.user})
-    return render_to_response('index.html',
-                             context_instance=context)
+    # context = RequestContext(request,
+    #                        {'request': request,
+    #                         'user': request.user})
+    # return render_to_response('index.html',
+    #                          context_instance=context)
+    return HttpResponseRedirect('/')

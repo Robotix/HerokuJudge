@@ -48,10 +48,10 @@ def submit(request):
         dir_work = os.path.dirname(os.path.dirname(__file__))
 
         build_cmd = {
-            'c': 'gcc main.c -o main -Wall -lm -O2 -std=c99 --static -DONLINE_JUDGE',
-            'cpp': 'g++ main.cpp -O2 -Wall -lm --static  -o main',
-            'java': 'javac Main.java',
-            'python2': 'python2 -m py_compile main.py',
+            'c': 'gcc ./../main.c -o main -Wall -lm -O2 -std=c99 --static',
+            'cpp': 'g++ ./../main.cpp -O2 -Wall -lm --static  -o main',
+            'java': 'javac ./../Main.java',
+            'python2': 'python2 -m py_compile ./../main.py',
         }
 
         if request.POST['lang'] not in build_cmd.keys():
@@ -88,7 +88,7 @@ def submit(request):
 
         print "compiled"
 
-        print out;
+        print out
         if p.returncode != 0: 
             return HttpResponse(out)
 

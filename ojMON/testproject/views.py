@@ -57,6 +57,8 @@ def submit(request):
         if request.POST['lang'] not in build_cmd.keys():
             return HttpResponse("Failure in lang")
 
+        print request.POST['lang']
+        
         if request.POST['lang']=="c":
             f = open("main.c", "w")
         elif request.POST['lang']=="cpp":

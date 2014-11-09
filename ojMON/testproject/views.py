@@ -30,7 +30,7 @@ def landingPage(request):
                             context_instance=context)
 
 def raid1(request):
-    if !request.user.is_authenticated():
+    if not request.user.is_authenticated():
         return redirect('/')
     context = RequestContext(request,
                            {'request': request,

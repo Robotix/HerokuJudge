@@ -76,7 +76,7 @@ def submit(request):
         p = subprocess.Popen(
             build_cmd[request.POST['lang']],
             shell=True,
-            # cwd=dir_work,
+            cwd=dir_work,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
         err, out = p.communicate()

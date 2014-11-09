@@ -58,14 +58,14 @@ def submit(request):
             return HttpResponse("Failure in lang")
 
         print request.POST['lang']
-        
-        if request.POST['lang']=="c":
+
+        if request.POST['lang']=='c':
             f = open("main.c", "w")
-        elif request.POST['lang']=="cpp":
+        if request.POST['lang']=='cpp':
             f = open("main.cpp", "w")
-        elif request.POST['lang']=="java":
+        if request.POST['lang']=='java':
             f = open("Main.java", "w")
-        elif request.POST['lang']=="python2":
+        if request.POST['lang']=='python2':
             f = open("main.py", "w")
         
         f.write(request.POST['source'])

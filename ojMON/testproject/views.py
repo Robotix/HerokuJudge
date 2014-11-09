@@ -113,8 +113,8 @@ def raid1_sim(language):
     count = 0
     bunkers = 0
 
-    for i in (0,img.size[0]):
-        for j in (0,img.size[1]):
+    for i in (0,img.size[0]-1):
+        for j in (0,img.size[1]-1):
             if pix[i,j]>200:
                 bunkers= bunkers +1
 

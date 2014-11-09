@@ -115,7 +115,7 @@ def raid1_sim(language):
 
     for i in img.size[0]:
         for j in img.size[1]:
-            if pix[i,j]>200
+            if pix[i,j]>200:
                 bunkers= bunkers +1
 
     run_cmd = {

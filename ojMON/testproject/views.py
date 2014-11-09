@@ -48,10 +48,10 @@ def submit(request):
         dir_work = os.path.dirname(os.path.dirname(__file__))
 
         build_cmd = {
-            "c": 'gcc main.c -o main -Wall -lm -O2 -std=c99 --static -DONLINE_JUDGE',
-            "cpp": 'g++ main.cpp -O2 -Wall -lm --static -DONLINE_JUDGE -o main',
-            "java": 'javac Main.java',
-            "python2": 'python2 -m py_compile main.py',
+            'c': 'gcc main.c -o main -Wall -lm -O2 -std=c99 --static -DONLINE_JUDGE',
+            'cpp': 'g++ main.cpp -O2 -Wall -lm --static  -o main',
+            'java': 'javac Main.java',
+            'python2': 'python2 -m py_compile main.py',
         }
 
         if request.POST['lang'] not in build_cmd.keys():
@@ -60,16 +60,21 @@ def submit(request):
         print request.POST['lang']
 
         if request.POST['lang']=='c':
-            f = open("main.c", "w")
-        if request.POST['lang']=='cpp':
-            f = open("main.cpp", "w")
-        if request.POST['lang']=='java':
-            f = open("Main.java", "w")
-        if request.POST['lang']=='python2':
-            f = open("main.py", "w")
-        
-        f.write(request.POST['source'])
-        f.close()
+            f = open('main.c', 'w')
+            f.write(request.POST['source'])
+            f.close()
+        elif request.POST['lang']=='cpp':
+            f = open('main.cpp', 'w')
+            f.write(request.POST['source'])
+            f.close()
+        elif request.POST['lang']=='java':
+            f = open('Main.java', 'w')
+            f.write(request.POST['source'])
+            f.close()
+        elif request.POST['lang']=='python2':
+            f = open('main.py', 'w')
+            f.write(request.POST['source'])
+            f.close()
 
         print "written"
 

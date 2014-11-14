@@ -1,5 +1,6 @@
 import cv2
-import os, subprocess, Image
+import os, subprocess
+from PIL import Image
 from django.http import *
 from django.shortcuts import render_to_response
 

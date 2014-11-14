@@ -1,6 +1,6 @@
 import cv2
 import os, subprocess
-from PIL import Image
+# from PIL import Image
 from django.http import *
 from django.shortcuts import render_to_response
 
@@ -108,15 +108,14 @@ def raid1_sim(language):
     
     dir_work = os.path.dirname(os.path.dirname(__file__))
 
-    img = Image.open("raid1_test.jpg")
-    pix = img.load()
+    img = cv2.imread('raid1_test.jpg',cv2.IMREAD_GRAYSCALE)
 
     count = 0
     bunkers = 0
 
     for i in (0,img.size[0]-1):
         for j in (0,img.size[1]-1):
-            if pix[i,j]>200:
+            if img[i,j]>200:
                 bunkers= bunkers +1
 
     run_cmd = {
@@ -150,7 +149,7 @@ def raid1_sim(language):
             else:    
                 return 0
 
-        if pix[int(x),int(y)]>200:
+        if img[int(x),int(y)]>200:
             p.stdin.write("YES\n")
 
         else:

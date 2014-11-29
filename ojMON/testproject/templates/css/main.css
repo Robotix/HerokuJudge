@@ -28,6 +28,15 @@ html {
 	background-color:rgba(0,0,0,0.2);
 	border: 1px solid #000;
 }
+#content2 {
+	width: 900px;
+	margin: 0 auto;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	overflow: auto;
+	background-color:rgba(255,255,255,0.5);
+	border: 1px solid #000;
+}
 #content h1 {
 	font-family: 'BigNoodle';
 	font-weight: 600;

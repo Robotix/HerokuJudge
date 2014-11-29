@@ -1,4 +1,4 @@
-import cv2
+# import cv2
 import os, subprocess
 # from PIL import Image
 from django.http import *
@@ -13,8 +13,6 @@ from django.views.decorators.csrf import csrf_exempt
 from solutions.models import sol
 
 def homePage(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect('/landingPage/')
     context = RequestContext(request,
                            {'request': request,
                             'user': request.user})

@@ -1,4 +1,4 @@
-# import cv2
+import cv2
 import os, subprocess
 # from PIL import Image
 from django.http import *

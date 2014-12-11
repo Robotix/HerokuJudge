@@ -23,7 +23,7 @@
 #ps {
 	display: block;
 }
-#submissions, #leaderboard, #discussions {
+#submissions, #leaderboard, #discussions, #tutorial {
 	display: none;
 }
 .prb-desc {

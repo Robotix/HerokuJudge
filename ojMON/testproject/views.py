@@ -1,6 +1,5 @@
-# import cv2
+import cv2
 import os, subprocess
-# from PIL import Image
 from django.http import *
 from django.shortcuts import render_to_response
 
@@ -56,8 +55,6 @@ def submit(request):
         if request.POST['lang'] not in build_cmd.keys():
             return HttpResponse("Failure in lang")
 
-        print request.POST['lang']
-
         if request.POST['lang']=='c':
             f = open('main.c', 'w')
             f.write(request.POST['source'])
@@ -75,8 +72,8 @@ def submit(request):
             f.write(request.POST['source'])
             f.close()
 
-        print "written"
-
+       	# safe = check_dangerous_code(request.POST['lang'])
+        	
         p = subprocess.Popen(
             build_cmd[request.POST['lang']],
             shell=True,
@@ -85,14 +82,10 @@ def submit(request):
             stderr=subprocess.PIPE)
         err, out = p.communicate()
 
-        print "compiled"
-
-        print out
         if p.returncode != 0: 
             return HttpResponse(out)
 
         queries = raid1_sim(request.POST['lang'])
-        print "queries = " + str(queries)
         if queries==0:
             return HttpResponse("Failure in sim")
         else:

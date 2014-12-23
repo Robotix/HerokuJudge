@@ -1,6 +1,6 @@
 import cv2
 import os, subprocess
-import django.http
+from django.http import *
 from django.shortcuts import render_to_response
 
 from django.contrib import auth, messages

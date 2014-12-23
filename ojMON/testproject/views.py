@@ -1,9 +1,8 @@
 import cv2
 import os, subprocess
-from django.http import *
+import django.http
 from django.shortcuts import render_to_response
 
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import auth, messages
 from django.contrib.auth import logout as auth_logout
 from django.template.context import RequestContext

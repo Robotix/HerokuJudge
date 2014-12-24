@@ -14,8 +14,7 @@ def homePage(request):
     context = RequestContext(request,
                            {'request': request,
                             'user': request.user})
-    return render_to_response('index.html',
-                             context_instance=context)
+    return HttpResponse('Under Maintenance')
 
 def landingPage(request):
     if not request.user.is_authenticated():

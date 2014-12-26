@@ -1,0 +1,24 @@
+{% extends 'sudocode/base_site.html' %}
+
+{% block title %}MY ACCOUNT{% endblock %}
+
+{% block header1_link %}"{% url 'logout' %}"{% endblock %}
+{% block header1 %}LOGOUT{% endblock %}
+{% block header2_link %}"{% url 'dashboard' %}"{% endblock %}
+{% block header2 %}DASHBOARD{% endblock %}
+{% block header3_link %}"{% url 'index' %}"{% endblock %}
+{% block header3 %}HOME{% endblock %}
+
+{% block content %}
+
+<div id="content" class="prb-desc">
+	<h2>Basic Information:</h2>
+	<p>
+	Name: {{ name }}<br>
+	User Name: {{ username }}<br>
+	Email ID: {{ email }}<br>
+	</p>
+	<h2>Submissions:</h2>
+</div>
+
+{% endblock %}

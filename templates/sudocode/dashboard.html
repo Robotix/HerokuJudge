@@ -1,0 +1,21 @@
+{% extends "sudocode/base_site.html" %}
+
+{% block title %}DASHBOARD{% endblock %}
+
+{% block header1_link %}"{% url 'logout' %}"{% endblock %}
+{% block header1 %}LOGOUT{% endblock %}
+{% block header2_link %}"{% url 'users:myAccountPage' %}"{% endblock %}
+{% block header2 %}MY ACCOUNT{% endblock %}
+{% block header3_link %}"{% url 'index' %}"{% endblock %}
+{% block header3 %}HOME{% endblock %}
+
+{% block content %}
+<div class="prb-holder">
+	<h2>RAID I</h2>
+	<p class="prb-statement">
+		<span class="prb-meta">PROBLEM STATEMENT:</span><br /><br />
+		Write a code to optimise your strategy to find and destroy enemy bunkers in a jungle.
+	</p>
+	<a class="gen-btn" href="{% url 'theraidone' %}">SOLVE CHALLENGE</a>
+</div>
+{% endblock %}

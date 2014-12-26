@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<! This online judge was made by Aditya Narayan. Contact: narayanaditya95@gmail.com>
+<html>
+
+<head>
+	<title>Sudocode</title>
+	{% load staticfiles %}
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Raleway'>
+	<link rel="stylesheet" type="text/css" href="{% static 'sudocode/css/reset.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'sudocode/css/main.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'sudocode/css/problem.css' %}" />
+	<script src="{%static 'sudocode/js/jquery-1.11.0.min.js' %}"></script>
+</head>
+
+<body>
+
+	<div id="container">
+
+		<div id="content">
+
+			<div id="top">
+				<img src="{% static 'sudocode/assets/sudocode.png' %}" width="200" style="float: left;" />
+				<img src="{% static 'sudocode/assets/logo.png' %}" width="430" style="float: left; margin-bottom: 15px;" />
+				<h1>Sudocode</h1>
+			</div>
+			
+			<div id="text">
+				<p>Do you have what it takes to eradicate the enemy from the dense jungle?
+				Prove your mettle in the two problem statements of the online coding event by cleaning out the jungles.</p>
+			</div>
+
+			<div id="soclogin">
+				{% if user and not user.is_anonymous %}
+					 <br><br><a href="{% url 'dashboard' %}"><img src="{% static 'sudocode/assets/entersite.png' %}" width="155" style="margin-right: 20px;"/></a>
+				{% else %}
+					<br><br><a href="{% url 'social:begin' 'github' %}?next={{ request.path }}"><img src="{% static 'sudocode/assets/gitlogin.png' %}" width="145" /></a>
+					<a href="{% url 'social:begin' 'disqus' %}?next={{ request.path }}"><img src="{% static 'sudocode/assets/disqlogin.png' %}" width="145" style="margin-right: 0px;" /></a><br>
+					{% comment 'Chuck Google's OAuth. I have a life to live. Damn you HTTP 403' %}
+					<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Google</a>
+					{% endcomment %}
+				{% endif %}
+			</div>
+
+		</div>
+		
+		<div id="content2">
+			<ul id="tabs" background:white>
+				<li><a href="#introduction" id="tab_1">Introduction</a></li>
+				<li><a href="#rules" id="tab_2">Rules and Regulations</a></li>
+				<li><a href="#prize" id="tab_3">Prize Money</a></li>
+				<li style="border-right: none;"><a href="#sponsors" id="tab_4">Sponsors</a></li>
+			</ul>
+
+			<div id="tab1" class="prb-desc">
+				<p>Do you have what it takes to eradicate the enemy from the dense jungle?<br>
+				Prove your mettle in the two problem statements of the online coding event by cleaning out the jungles.<br>
+				The Coding Event has two parts : The Raid I and The Raid II</p>
+			</div>
+			
+			<div id="tab2" class="prb-desc">
+				<p>
+					A team can have a maximum of 3 members, none of which can form a separate team for the event.<br>
+    				Code should be written only in C/C++/Python/JAVA<br>
+					The participant’s code can only include the standard header files and OpenCV.<br>
+    				The decision of the Team ROBOTIX will be final.<br>
+    				Sample input files and the Evaluator will be uploaded soon.<br>
+	    			Running time should be realistic and any running time of more than 3 sec will be disqualified.<br>
+    				Tie breakers will be resolved on the basis of minimum running time.<br> 		
+    			</p>
+			</div>
+			
+			<div id="tab3" class="prb-desc">
+				<p> To be announced.</p>
+			</div>
+			
+			<div id="tab4" class="prb-desc">
+				<p> To be announced.</p>
+			</div>
+		</div>
+	</div>
+	<script src="{% static 'sudocode/js/switch.js' %}"></script>
+</body>
+</html>

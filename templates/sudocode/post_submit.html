@@ -1,0 +1,31 @@
+{% extends 'sudocode/base_site.html' %}
+
+{% block title %}SUCCESS{% endblock %}
+
+{% block header1_link %}"{% url 'logout' %}"{% endblock %}
+{% block header1 %}LOGOUT{% endblock %}
+{% block header2_link %}"{% url 'dashboard' %}"{% endblock %}
+{% block header2 %}DASHBOARD{% endblock %}
+{% block header3_link %}"{% url 'index' %}"{% endblock %}
+{% block header3 %}HOME{% endblock %}
+
+{% block content %}
+
+<div class="prb-holder">
+	{% if result == "true" %}
+		<h2>SUBMISSION SUCCESSFUL</h2>
+		<p class="prb-statement">
+			<span class="prb-meta"></span><br /><br />
+			Your submission was submitted to the judge for evaluation.
+		</p>
+		<a class="gen-btn" href="/submission/{{ id }}">VIEW STATUS</a>
+	{% else %}
+		<h2>SUBMISSION FAILED</h2>
+		<p class="prb-statement">
+			<span class="prb-meta"></span><br /><br />
+			Your submission couldn't be submitted to the judge. Please refer the tutorial.
+		</p>
+		<a class="gen-btn" href="{% url 'theraidone' %}">TUTORIAL</a>
+	{% endif %}
+</div>
+{% endblock %}

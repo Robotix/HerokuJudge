@@ -1,0 +1,37 @@
+{% extends 'sudocode/base_site.html' %}
+
+{% block title %}SUBMISSION{% endblock %}
+
+{% block link %}
+	{% load pygmentify %}
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'django_pygments/css/pygments_default.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'django_pygments/css/demo.css' %}" />
+{% endblock %}
+
+{% block header1_link %}"{% url 'logout' %}"{% endblock %}
+{% block header1 %}LOGOUT{% endblock %}
+{% block header2_link %}"{% url 'users:myAccountPage' %}"{% endblock %}
+{% block header2 %}MY ACCOUNT{% endblock %}
+{% block header3_link %}"{% url 'dashboard' %}"{% endblock %}
+{% block header3 %}DASHBOARD{% endblock %}
+
+{% block content %}
+
+<div id="content" class="prb-desc">
+	<h2>Submission Id:</h2>
+	<p> {{ id }} </p>
+	<h2>Source:</h2>
+	
+	<div id="pygment_content">
+		{% pygment %}
+			<pre lang="{{ language|lower }}" >
+{{ source | safe }}	
+			</pre>
+		{% endpygment %}
+	</div>
+	
+	<h2>Status:</h2>
+	<p> {{ status }} </p>
+</div>
+{% endblock %}

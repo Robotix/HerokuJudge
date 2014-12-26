@@ -1,0 +1,58 @@
+<html>
+<! This online judge was made by Aditya Narayan. Contact: narayanaditya95@gmail.com>
+<head>
+	<title>Sudocode</title>
+	{% load staticfiles %}
+	{% block link %}
+	{% endblock %}
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Raleway' />
+	<link rel="stylesheet" type="text/css" href="{% static 'sudocode/css/reset.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'sudocode/css/landing.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'sudocode/css/problem.css' %}" />
+</head>
+<body>
+
+	<div id="header">
+		<img src="{% static 'sudocode/assets/sudocode.png' %}" width="150" style="float: left;" />
+		<img src="{% static 'sudocode/assets/logo.png' %}" width="400" style="float: left; margin-bottom: 15px; margin-left: 20px;" />
+		<h1>{% block title %}{% endblock %}</h1>
+		<a href={% block header1_link %}{% endblock %} class="dash_btn">{% block header1 %}{% endblock %}</a>
+		<a href={% block header2_link %}{% endblock %} class="dash_btn">{% block header2 %}{% endblock %}</a>
+		<a href={% block header3_link %}{% endblock %} class="dash_btn">{% block header3 %}{% endblock %}</a>
+		<a href={% block header4_link %}{% endblock %} class="dash_btn">{% block header4 %}{% endblock %}</a>
+	</div>
+
+	<div id="content">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+	<div id="footer">
+
+		<div class="box">
+			<h2>EVENTS</h2>
+			<ul>
+				<li><a href="http://www.robotix.in/events/event/cascade">Cascade</a></li>
+			    <li><a href="http://www.robotix.in/events/event/skyfall">Skyfall</a></li>
+			    <li><a href="http://www.robotix.in/events/event/minefield">MineField</a></li>
+			    <li><a href="http://www.robotix.in/events/event/stepup">StepUp</a></li>
+			    <li><a href="http://www.robotix.in/events/event/aughit">AugHit</a></li>
+			    <li><a href="http://www.robotix.in/events/event/sudocode">Sudocode</a></li>
+			</ul>
+		</div>
+	
+		<div class="box">
+			<h2>CONNECT</h2>
+			<ul>
+    			<li><a href="https://www.facebook.com/robotixiitkgp">Facebook</a></li>
+			    <li><a href="https://twitter.com/RobotixIITKgp">Twitter</a></li>
+			    <li><a href="https://www.youtube.com/user/RobotixIITkgp?feature=sub_widget_1">YouTube</a></li>
+			    <li><a href="https://plus.google.com/u/0/117481117164748333739/posts">Google+</a></li>
+			    <li><a href="https://mail.google.com/mail/u/0/?ui=2&view=btop&ver=1pxvtfa3uo81z#to%253Dcontact%252540robotix.in%2526cmid%253D1">contact@robotix.in</a></li>
+			    <li><a href="http://blog.robotix.in/">Blog</a></li>
+			    <li><a href="http://www.robotix.in/app/">Robotix App</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

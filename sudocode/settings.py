@@ -63,10 +63,10 @@ WSGI_APPLICATION = 'sudocode.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dape9acmnin6i7',
-        'USER': 'zmsifgquudpmoc',
-        'PASSWORD': '0v-c3Z0v5R2_Ckipilty4dOpDS',
-        'HOST': 'ec2-54-246-86-137.eu-west-1.compute.amazonaws.com',
+        'NAME': 'da4abl57es557h',
+        'USER': 'xeujnnexbxwkde',
+        'PASSWORD': 'dEieJrTwnUA9zsNSdfRDoUmBnh',
+        'HOST': 'ec2-54-204-40-140.compute-1.amazonaws.com',
         'PORT': '5432'
     }
 }

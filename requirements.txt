@@ -3,4 +3,4 @@ static3==0.5.1
 wsgiref==0.1.2
 python-social-auth==0.2.1
 pygments==2.0.1
--e git+https://github.com/narayanaditya95/lorun.git
+-e git+https://github.com/narayanaditya95/lorun.git#egg=lorun-master

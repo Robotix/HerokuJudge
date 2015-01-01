@@ -113,7 +113,7 @@ class Submission(models.Model):
             'args':['python','raidone.py'],
             'fd_in':fin.fileno(),
             'fd_out':ftemp.fileno(),
-            'timelimit':5000, #in MS
+            'timelimit':10000, #in MS
             'memorylimit':100000, #in KB
         }
         
@@ -145,8 +145,8 @@ class Submission(models.Model):
             except:
                 self.stat = 'We faced a problem understanding your queries. Are your sure you have read the tutorial?'
         else:
-            self.queries = int(ftemp.read())
-            self.cpu = rst['timeused']
-            self.memory = rst['memoryused']
-            self.stat = JUDGE_RESULT[result] + 'Are your sure you have read the tutorial?'
+            self.queries = 99999
+            self.cpu = 99999
+            self.memory = 99999
+            self.stat = JUDGE_RESULT[str(rst['result'])]
 

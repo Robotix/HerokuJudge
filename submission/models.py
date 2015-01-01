@@ -64,12 +64,10 @@ class Submission(models.Model):
         if self.language in ['c', 'cpp']:
         
             if self.source.find('system') >= 0:
-                print 'found system'
                 return False
-            print 'not found'
             return True
 
-    def compile(self):
+    def raidone_compile(self):
 
         BUILD_CMD = {
             'c': 'gcc -o main -Wall -lm -O2 -std=c99 --static ./',
@@ -100,6 +98,10 @@ class Submission(models.Model):
 
         if buildProcess.returncode != 0: 
             self.stat = 'Compilation error:\n', out
+            return False
         else:
             self.stat = 'Compiled successfully'
-        os.remove()
+            return True
+
+    def raidone_simulate(self):
+        return True

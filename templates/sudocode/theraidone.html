@@ -22,22 +22,24 @@
 	<div id="tab1" class="prb-desc">
 		<p>Write a code to optimise your strategy to find and destroy enemy bunkers in a jungle.</p>
 		<h2>Description</h2>
-		<p> You work with the CIA and are running a military campaign against the terrorists. Your most recent undertaking is a mission to find and destroy enemy bunkers in the african jungles. Each bunker you have to attack has a number of weak points, every one of which has to be attacked to destroy that bunker. Your intelligence has a list of the number of weak points per bunker. You fly out with a helicopter to find and destroy these bunkers in the dense jungle. Your only option however to locate these bunkers is to bomb different spots randomly in the jungle until you hit one of the weak points of a bunker. Write a strategic code that can help you minimise the number of bombs you use to destroy these bunkers.</p>
+		<p> You work with the CIA and are running a military campaign against the terrorists. Your most recent undertaking is a mission to find and destroy enemy bunkers in the African jungles. Each bunker you have to attack has a number of cells, every one of which has to be attacked to destroy that bunker. Your intelligence has a list of the number of cells per bunker. You fly out with a helicopter to find and destroy these bunkers in the dense jungle. Your only option however to locate these bunkers is to bomb different spots randomly in the jungle until you hit one of the cells of a bunker. Write a strategic code that can help you minimise the number of bombs you use to destroy these bunkers.</p>
 		<h2>Assumptions</h2>
-		<p>The Jungle can be assumed to be spread out over a 2-d array. Each weak point of a bunker occupies one cell. Weak points can be assumed to be located adjacent to each other in a linear fashion, diagonally or in a square/rectangular fashion in the 2-d array.</p>
+		<p>The Jungle can be assumed to be spread out over a 2-d array. Each cell of a bunker occupies one pixel. Cells can be assumed to be located adjacent to each other in a 4-connected connectivity fashion in the 2-d array.</p>
 		<h2>Input</h2>
-		<p> The first line would contain an integer n (10 &lt;=  n &lt;= 500) denoting dimension of the square grid.<br>The second line would contain an integer m (m &lt; n*n) denoting the total number of bunkers in the square grid.</p>
+		<p> The first line would contain an integer n (10 &lt;=  n &lt;= 500) denoting dimension of the square grid.<br>The second line would contain an integer m (m &lt; n*n) denoting the total number of bunker cells in the square grid.</p>
 		<h2>Event Rules</h2>
 		<p>The jungle is assumed to be a grid of any size between 10*10 to 500*500.<br>
-    	The weak points of one bunker can be found only in a continuous linear/ diagonal/ square/ rectangular fashion in the rectangular grid. So once you have found one weak point in a bunker, you can rest assured that the next one will be on any of the adjacent/ diagonal cells.<br>
-   		The position of a cell in the grid is defined by a pair of space separated integers “x y” denoting the cell position with row number x and column number y.<br>
+    	The cells of one bunker can be found only in a 4-connected connectivity in the grid. So once you have found one cell in a bunker, you can rest assured that the next one will be on any of four the adjacent pixels.<br>
+   		The position of a cell in the grid is defined by a pair of space separated integers “r c” denoting the cell position with row number r and column number c.<br>
    		Bombs are air-dropped on to a particular cell in the jungle.<br>
-    	Each query is a string consisting of two space-separated integers printed to the STDOUT. The first integer denotes the x-coordinate of the cell position and the second integer the y-coordinate respectively.<br>
+    	Each query is a string consisting of two space-separated integers printed to the STDOUT. The first integer denotes the row number of the cell position and the second integer the column number respectively.<br>
+    	Both row number 'r' and column number 'c' are zero-indexed.<br>
     	The participants code must send queries to determine if the bomb drop was successful.<br>
    		The simulator counts the number of queries sent.<br>
    		For each query, the simulator would either return the string “YES” or “NO” answering whether the cell position mentioned in the query contained a weak point to the participant’s STDIN. The participant’s code must read the result of the query as a string from the STDIN.<br></p>
 		<h2>Scoring</h2>
-		<p>The participant's code with the minimum number of queries wins.</p>
+		<p>The participant's code with the minimum number of queries wins.<br>
+		If a tie arises, the participant's code with lesser running time wins.</p>
 	</div>
 		
 	<div id="tab2" class="prb-desc">
@@ -62,18 +64,19 @@
 		<p>This tutorial is intended to allow participants to submit responses to the Online Judge successfully.</p>
 		<h2>How are submissions compiled?</h2>
 		<p>Your code is tested by a computer automatically, not by a human being, and you have to write your code accordingly.<br>
-			The judge compiles the participant's code with the standard compilers for each language.<br>
-			The following library is allowed to be imported in the participant's code:<br>
-			Standard Math Library<br>
-			Importing any other library would cause your submission to fail.</p>
+		The judge compiles the participant's code with the standard compilers for each language.<br>
+		The following libraries are allowed to be imported in the participant's code:<br>
+		Standard Math Library<br>
+		OpenCV<br>
+		Importing any other library would cause your submission to fail.</p>
 		<h2>How are submissions executed?</h2>
 		<p>The judge uses a sandboxed simulation environment to run the participant's code.<br>
-			Deviation from expected problem solving procedures would result in a wrong submission. Repetition of such behaviour would result in the participant being banned.</p>
+		Deviation from expected problem solving procedures would result in a wrong submission. Repetition of such behaviour would result in the participant being banned.</p>
 		<h2>What can my program output to the standard output?</h2>
 		<p>The participant's program can only output queries to the standard output. The format of a query is:<br>
-		<code>&lt;x-integer&gt;*space*&lt;y-integer&gt;*newline-character*</code><br>
-		For example: If the query is to the cell with coordinates (13,16), the corresponding query string would be:<br>
-		<code>"13 16\n"</code><br>
+		<code>&lt;row-number&gt;*space*&lt;column-number&gt;*newline-character*</code><br>
+		For example: If the query is to the cell with row number 0 and column number 15, the corresponding query string would be:<br>
+		<code>"0 15\n"</code><br>
 		<emp><b>NOTE:</b></emp>Failing to write a newline-character would not flush the output buffer. The program must explicitly flush the output buffer in such cases. Failure to do so may result in a wrong submission.<br>
 		If the program outputs any random string other than a query, the submission would fail.<br></p>
 		<h2>How does my input vary?</h2>

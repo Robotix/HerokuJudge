@@ -8,11 +8,13 @@ from django.http import Http404
 def submission(request, uniqueID):
 	if not request.user.is_authenticated():
 		raise Http404
-	print uniqueID
 	submissionObject = get_object_or_404(Submission, id= int(uniqueID))
 	if request.user.email != submissionObject.user:
-		if request.user.email != 'narayanaditya95@gmail.com':
+		if request.user.email != 'aditya.narayan@robotix.in':
 			raise Http404
+	if submissionObject.stat is 'Safe for compilation':
+		if submissionObject.raidone_compile():
+			submissionObject.raidone_simulate()
 	return render(request, 'submission/submission.html', 
 		{'id': submissionObject.id,
 		'source': submissionObject.source,

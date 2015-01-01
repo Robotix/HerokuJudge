@@ -33,7 +33,7 @@ def submit(request):
             problem= request.POST['problem'],
             source= request.POST['source'],
             language= request.POST['lang'],
-            stat= 'Not compiled yet',
+            stat= '',
             queries= 2500,
             cpu= 05.000,
             memory= 999.99,)
@@ -42,6 +42,8 @@ def submit(request):
             submissionObject.save()
             return HttpResponseRedirect(reverse('status', args=[submissionObject.id]))
         else:
+            submissionObject.stat= 'Library Import Error'
+            submissionObject.save()
             return HttpResponseRedirect(reverse('status', args=[0]))
     else:
         raise Http404

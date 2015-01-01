@@ -15,4 +15,5 @@ def AccountPage(request, user_name):
 		'name': requestedUser.get_full_name(),
 		'username': requestedUser.username,
 		'email': requestedUser.email,
+		
 		})

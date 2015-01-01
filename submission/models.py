@@ -114,7 +114,7 @@ class Submission(models.Model):
             'fd_in':fin.fileno(),
             'fd_out':ftemp.fileno(),
             'timelimit':10000, #in MS
-            'memorylimit':100000, #in KB
+            'memorylimit':200000, #in KB
         }
         
         JUDGE_RESULT ={

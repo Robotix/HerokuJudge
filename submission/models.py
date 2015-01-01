@@ -1,4 +1,6 @@
 from django.db import models
+import os, subprocess
+import lorun
 
 # Create your models here.
 
@@ -90,7 +92,7 @@ class Submission(models.Model):
         fileObject.close()
             
         buildProcess = subprocess.Popen(
-            build_cmd[self.language]+str(self.id)+FILE_NAME[self.language],
+            BUILD_CMD[self.language]+str(self.id)+FILE_NAME[self.language],
             shell=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
@@ -104,4 +106,47 @@ class Submission(models.Model):
             return True
 
     def raidone_simulate(self):
-        return True
+        fin = open('input.in')
+        ftemp = open('output.out', 'w')
+        
+        runcfg = {
+            'args':['python','raidone.py'],
+            'fd_in':fin.fileno(),
+            'fd_out':ftemp.fileno(),
+            'timelimit':5000, #in MS
+            'memorylimit':100000, #in KB
+        }
+        
+        JUDGE_RESULT ={
+            '0': 'Accepted',   
+            '1': 'Presentation Error',
+            '2': 'Time Limit Exceeded',
+            '3': 'Memory Limit Exceeded',
+            '4': 'Wrong Answer',
+            '5': 'Runtime Error',
+            '6': 'Output Limit Exceeded',
+            '7': 'Compile Error',
+            '8': 'System Error',
+        }
+        
+        rst = lorun.run(runcfg)
+        fin.close()
+        ftemp.close()
+
+        print rst
+        
+        ftemp = open('output.out')
+        if rst['result'] == 0:
+            try:
+                self.queries = int(ftemp.read())
+                self.cpu = rst['timeused']
+                self.memory = rst['memoryused']
+                self.stat = 'Congratulations! Your submission ran successfully.'
+            except:
+                self.stat = 'We faced a problem understanding your queries. Are your sure you have read the tutorial?'
+        else:
+            self.queries = int(ftemp.read())
+            self.cpu = rst['timeused']
+            self.memory = rst['memoryused']
+            self.stat = JUDGE_RESULT[result] + 'Are your sure you have read the tutorial?'
+

@@ -40,5 +40,4 @@ while True:
         
     p.stdin.flush()
     count = count + 1
-
 print str(count)

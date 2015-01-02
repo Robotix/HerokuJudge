@@ -27,7 +27,7 @@ TEMPLATE_DEBUG = False
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 # Allow all host headers
-ALLOWED_HOSTS = ['*','localhost',]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 

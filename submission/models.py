@@ -103,7 +103,7 @@ class Submission(models.Model):
             self.save()
             return False
         else:
-            self.stat = 'Compiled successfully'
+            # self.stat = 'Compiled successfully'
             self.save()
             return True
 
@@ -132,6 +132,8 @@ class Submission(models.Model):
         }
         
         rst = lorun.run(runcfg)
+        print 'complete simulate'
+
         fin.close()
         ftemp.close()
 
@@ -139,8 +141,10 @@ class Submission(models.Model):
         if rst['result'] == 0:
             try:
                 self.queries = int(ftemp.read())
+                print 'read queries'
                 self.cpu = rst['timeused']
                 self.memory = rst['memoryused']
+                print 'read cpu and memory'
                 self.stat = 'Congratulations! Your submission ran successfully.'
                 self.save()
                 ftemp.close()

@@ -15,8 +15,6 @@ def submission(request, uniqueID):
 	if submissionObject.stat == 'Safe for compilation':
 		if submissionObject.raidone_compile():
 			submissionObject.raidone_simulate()
-	if submissionObject.stat == 'Compiled successfully':
-		submissionObject.raidone_simulate()
 	return render(request, 'submission/submission.html', 
 		{'id': submissionObject.id,
 		'source': submissionObject.source,

@@ -100,9 +100,11 @@ class Submission(models.Model):
 
         if buildProcess.returncode != 0: 
             self.stat = 'Compilation error:\n', out
+            self.save()
             return False
         else:
             self.stat = 'Compiled successfully'
+            self.save()
             return True
 
     def raidone_simulate(self):
@@ -133,8 +135,6 @@ class Submission(models.Model):
         fin.close()
         ftemp.close()
 
-        print rst
-        
         ftemp = open('output.out')
         if rst['result'] == 0:
             try:
@@ -149,4 +149,5 @@ class Submission(models.Model):
             self.cpu = 99999
             self.memory = 99999
             self.stat = JUDGE_RESULT[str(rst['result'])]
-
+        ftemp.close()
+        self.save()

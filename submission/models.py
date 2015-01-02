@@ -112,6 +112,7 @@ class Submission(models.Model):
         print 'opening input and output'
         fin = open('input.in')
         ftemp = open('output.out', 'w')
+        print 'opened input and output'
         
         runcfg = {
             'args':['python','raidone.py'],

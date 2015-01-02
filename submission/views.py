@@ -12,7 +12,8 @@ def submission(request, uniqueID):
 	if request.user.email != submissionObject.user:
 		if request.user.email != 'aditya.narayan@robotix.in':
 			raise Http404
-	if submissionObject.stat == 'Safe for compilation':
+	# if submissionObject.stat == 'Safe for compilation':
+	if True:
 		if submissionObject.raidone_compile():
 			submissionObject.raidone_simulate()
 	return render(request, 'submission/submission.html', 

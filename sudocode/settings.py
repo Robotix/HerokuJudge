@@ -21,13 +21,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'f(&c#7x3kkzea+t&kpv+@!jf=%wlih4mjro02tn7m3b(06zblj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-TEMPLATE_DEBUG = False
+TEMPLATE_DEBUG = True
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 # Allow all host headers
-ALLOWED_HOSTS = ['*','localhost',]
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -62,8 +62,16 @@ WSGI_APPLICATION = 'sudocode.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 # Parse database configuration from $DATABASE_URL
-DATABASES = {}
-DATABASES['default'] =  dj_database_url.config()
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'da4abl57es557h',
+        'USER': 'xeujnnexbxwkde',
+        'PASSWORD': 'dEieJrTwnUA9zsNSdfRDoUmBnh',
+        'HOST': 'ec2-54-204-40-140.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -87,10 +95,10 @@ USE_TZ = True
 # Static asset configuration
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static'
+# STATIC_ROOT = 'static'
 
 STATICFILES_DIRS = (
-    # os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 ################################# Python Social Auth Settings #################################

@@ -1,5 +1,6 @@
 from django.db import models
 import os, subprocess
+from decimal import *
 import lorun
 
 # Create your models here.
@@ -109,7 +110,6 @@ class Submission(models.Model):
 
     def raidone_simulate(self):
 
-        print 'opening input and output'
         fin = open('input.in')
         ftemp = open('output.out', 'w')
         
@@ -134,7 +134,6 @@ class Submission(models.Model):
         }
         
         rst = lorun.run(runcfg)
-        print 'complete simulate'
 
         fin.close()
         ftemp.close()
@@ -143,22 +142,23 @@ class Submission(models.Model):
         if rst['result'] == 0:
             try:
                 self.queries = int(ftemp.read())
-                print 'read queries'
-                self.cpu = rst['timeused']
-                self.memory = rst['memoryused']
-                print 'read cpu and memory'
+                self.cpu = Decimal(float(rst['timeused'])/1000).quantize(Decimal('.001'), rounding=ROUND_UP)
+                self.memory = Decimal(float(rst['memoryused'])/1000).quantize(Decimal('.01'), rounding=ROUND_UP)
                 self.stat = 'Congratulations! Your submission ran successfully.'
                 self.save()
                 ftemp.close()
-            except:
+            except ValueError:
+                self.queries = 9999
+                self.cpu = 99.999
+                self.memory = 999.99
                 self.stat = 'We faced a problem understanding your queries. Are your sure you have read the tutorial?'
                 self.save()
                 ftemp.close()
         else:
-            self.queries = 99999
-            self.cpu = 99999
-            self.memory = 99999
-            self.stat = 'Failed'
+            self.queries = 9999
+            self.cpu = 99.999
+            self.memory = 999.99
+            self.stat = JUDGE_RESULT[str(rst['result'])]
             self.save()
             ftemp.close()
 

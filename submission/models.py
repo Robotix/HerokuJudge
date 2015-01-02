@@ -108,6 +108,8 @@ class Submission(models.Model):
             return True
 
     def raidone_simulate(self):
+
+        print 'opening input and output'
         fin = open('input.in')
         ftemp = open('output.out', 'w')
         

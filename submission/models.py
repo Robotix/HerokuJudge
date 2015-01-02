@@ -142,12 +142,17 @@ class Submission(models.Model):
                 self.cpu = rst['timeused']
                 self.memory = rst['memoryused']
                 self.stat = 'Congratulations! Your submission ran successfully.'
+                self.save()
+                ftemp.close()
             except:
                 self.stat = 'We faced a problem understanding your queries. Are your sure you have read the tutorial?'
+                self.save()
+                ftemp.close()
         else:
             self.queries = 99999
             self.cpu = 99999
             self.memory = 99999
             self.stat = JUDGE_RESULT[str(rst['result'])]
-        ftemp.close()
-        self.save()
+            self.save()
+            ftemp.close()
+

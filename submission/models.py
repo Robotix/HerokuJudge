@@ -156,7 +156,7 @@ class Submission(models.Model):
             self.queries = 99999
             self.cpu = 99999
             self.memory = 99999
-            self.stat = JUDGE_RESULT[str(rst['result'])]
+            self.stat = 'Failed'
             self.save()
             ftemp.close()
 

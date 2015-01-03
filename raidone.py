@@ -34,10 +34,13 @@ while True:
 
     if img[int(x),int(y)]>200:
         p.stdin.write("YES\n")
-
+        bunkers = bunkers-1
     else:
         p.stdin.write("NO\n")
         
     p.stdin.flush()
     count = count + 1
-print str(count)
+if bunkers == 0:
+    print str(count)
+else
+    print 'Failure'

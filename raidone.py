@@ -31,6 +31,7 @@ while True:
             break
         else:    
             print 'Failure'
+            break
 
     if img[int(x),int(y)]>200:
         p.stdin.write("YES\n")
@@ -42,5 +43,5 @@ while True:
     count = count + 1
 if bunkers == 0:
     print str(count)
-else
+else:
     print 'Failure'

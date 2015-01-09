@@ -8,7 +8,7 @@ import lorun
 class Submission(models.Model):
 
     id = models.AutoField(primary_key=True)
-    user = models.EmailField(max_length=50)
+    user = models.CharField(max_length=50)
     problem = models.IntegerField()
     source = models.TextField()
     language = models.CharField(max_length=4)
@@ -74,7 +74,8 @@ class Submission(models.Model):
 
         BUILD_CMD = {
             'c': 'gcc -o main -Wall -lm -O2 -std=c99 --static ./',
-            'cpp': 'g++ -O2 -Wall -lm --static  -o main ./',
+            # 'cpp': 'g++ -O2 -Wall -lm --static  -o main ./',
+            'cpp':'g++ -o main `pkg-config opencv --cflags` `pkg-config opencv --libs` ./',
             # 'java': 'javac ./Main.java',
             'python2': 'python2 -m py_compile ./',
             'python3': 'python3 -m py_compile ./',
@@ -104,15 +105,26 @@ class Submission(models.Model):
             self.save()
             return False
         else:
-            # self.stat = 'Compiled successfully'
+            self.stat = 'Compiled successfully'
             self.save()
             return True
 
     def raidone_simulate(self):
 
-        fin = open('input.in')
+        fin = open('input.in', 'w')
         ftemp = open('output.out', 'w')
         
+        EXEC_NAME = {
+            'c': 'main',
+            'cpp': 'main',
+            # 'java': 'Main,java',
+            'python2': 'main.py',
+            'python3': 'main.py',
+        }
+        fin.write('%s\n%s\n' %(self.language, EXEC_NAME[self.language]))
+        fin.close
+        fin = open('input.in')
+
         runcfg = {
             'args':['python','raidone.py'],
             'fd_in':fin.fileno(),
@@ -137,23 +149,20 @@ class Submission(models.Model):
 
         fin.close()
         ftemp.close()
-
         ftemp = open('output.out')
+
         if rst['result'] == 0:
-            try:
-                self.queries = int(ftemp.read())
-                self.cpu = Decimal(float(rst['timeused'])/1000).quantize(Decimal('.001'), rounding=ROUND_UP)
-                self.memory = Decimal(float(rst['memoryused'])/1000).quantize(Decimal('.01'), rounding=ROUND_UP)
-                self.stat = 'Congratulations! Your submission ran successfully.'
-                self.save()
-                ftemp.close()
-            except ValueError:
+            self.stat = ftemp.readline()
+            self.cpu = Decimal(float(rst['timeused'])/1000).quantize(Decimal('.001'), rounding=ROUND_UP)
+            self.memory = Decimal(float(rst['memoryused'])/1000).quantize(Decimal('.01'), rounding=ROUND_UP)
+            if self.stat.find('Yay!')>=0:
+                self.queries = int(ftemp.readline())
+            else:
                 self.queries = 9999
                 self.cpu = 99.999
                 self.memory = 999.99
-                self.stat = 'We faced a problem understanding your queries. Are your sure you have read the tutorial?'
-                self.save()
-                ftemp.close()
+            self.save()
+            ftemp.close()
         else:
             self.queries = 9999
             self.cpu = 99.999

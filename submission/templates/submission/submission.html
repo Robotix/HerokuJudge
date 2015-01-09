@@ -33,13 +33,13 @@
 	
 	<h2>Status:</h2>
 	<p> {{ status }} </p>
-	{% if status == "Congratulations! Your submission ran successfully." %}
+	{% if "Yay!" in status %}
 		<h2>Queries:</h2>
 		<p>{{ queries }}</p>
-		<h2>Time:</h2>
-		<p>{{ cpu }} s</p>
-		<h2>Memory:</h2>
-		<p>{{ memory }} MB</p>
 	{% endif %}
+	<h2>Time:</h2>
+	<p>{{ cpu }} s</p>
+	<h2>Memory:</h2>
+	<p>{{ memory }} MB</p>
 </div>
 {% endblock %}

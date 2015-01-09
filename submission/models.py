@@ -159,8 +159,6 @@ class Submission(models.Model):
                 self.queries = int(ftemp.readline())
             else:
                 self.queries = 9999
-                self.cpu = 99.999
-                self.memory = 999.99
             self.save()
             ftemp.close()
         else:

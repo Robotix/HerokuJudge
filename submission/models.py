@@ -74,8 +74,8 @@ class Submission(models.Model):
 
         BUILD_CMD = {
             'c': 'gcc -o main -Wall -lm -O2 -std=c99 --static ./',
-            # 'cpp': 'g++ -O2 -Wall -lm --static  -o main ./',
-            'cpp':'g++ -o main `pkg-config opencv --cflags` `pkg-config opencv --libs` ./',
+            'cpp': 'g++ -O2 -Wall -lm --static  -o main ./',
+            # 'cpp':'g++ -o main `pkg-config opencv --cflags` `pkg-config opencv --libs` ./',
             # 'java': 'javac ./Main.java',
             'python2': 'python2 -m py_compile ./',
             'python3': 'python3 -m py_compile ./',

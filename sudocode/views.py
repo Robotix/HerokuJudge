@@ -29,7 +29,7 @@ def submit(request):
         return HttpResponseRedirect(reverse('index'))
     if request.method == 'POST':
         submissionObject = Submission(
-            user= request.user.email,
+            user= request.user.username,
             problem= request.POST['problem'],
             source= request.POST['source'],
             language= request.POST['lang'],

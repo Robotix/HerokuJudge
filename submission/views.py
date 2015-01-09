@@ -9,8 +9,8 @@ def submission(request, uniqueID):
 	if not request.user.is_authenticated():
 		raise Http404
 	submissionObject = get_object_or_404(Submission, id= int(uniqueID))
-	if request.user.email != submissionObject.user:
-		if request.user.email != 'aditya.narayan@robotix.in':
+	if request.user.username != submissionObject.user:
+		if request.user.username != 'admin':
 			raise Http404
 	if submissionObject.stat == 'Safe for compilation':
 		if submissionObject.raidone_compile():

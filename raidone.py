@@ -66,10 +66,10 @@ def main():
 
     # print 'correct= %d total= %d' %(correct_query_count, query_count)
     if correct_query_count >= bunker_count:
-        print 'Yay! You successfully bombed all the bunkers. You bombed %d bunkers with %d queries' %(bunker_count, query_count)
+        print 'Yay! You successfully bombed all the bunkers. You bombed %d bunker cells with %d queries' %(bunker_count, query_count)
         print int(query_count)
     else:
-        print 'You could only bomb %d bunkers out of %d bunkers. You sent %d queries' %(correct_query_count, bunker_count, query_count)
+        print 'You could only bomb %d bunker cells out of %d bunker cells. You sent %d queries' %(correct_query_count, bunker_count, query_count)
 
 if __name__ == '__main__': 
     main()

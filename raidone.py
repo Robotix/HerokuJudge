@@ -12,8 +12,8 @@ def main():
     correct_query_count = 0  
     bunker_count = 0
 
-    for i in range(0,img.shape[0]-1):                               #To get this through textfile
-        for j in range(0,img.shape[0]-1):
+    for i in range(img.shape[0]):                               #To get this through textfile
+        for j in range(img.shape[0]):
             if img[i,j]==255:
                 bunker_count += 1
 
@@ -53,7 +53,7 @@ def main():
                 sys.exit()
 
         if x>= img.shape[0] or y>=img.shape[0]:
-            print 'Incorrect query! You queried for %d %d in a %d sized grid' %x %y %img.shape[0]
+            print 'Incorrect query! You queried for %d %d in a %d sized grid' %(x, y, img.shape[0])
             sys.exit()
         if img[x,y]==255:
             if counter_img[x,y]==255:

@@ -129,7 +129,7 @@ def main():
             query_rect = [(army['R'] - 40*(r-army['R'])/dist, army['C'] + 40*(c-army['C'])/dist),
                           (r - 40*(r-army['R'])/dist, c + 40*(c-army['C'])/dist),
                           (r + 40*(r-army['R'])/dist, c + 40*(c-army['C'])/dist),
-                          (army['R'] + 40*(r-army['R'])/dist, army['C'] + 40*(c-army['C'])/dist),]
+                          (army['R'] + 40*(r-army['R'])/dist, army['C'] + 40*(c-army['C'])/dist)]
 
             print query_rect
 

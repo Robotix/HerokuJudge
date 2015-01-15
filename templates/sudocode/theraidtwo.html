@@ -1,0 +1,134 @@
+{% extends "sudocode/base_site.html" %}
+
+{% block title %}THE RAID II{% endblock %}
+
+{% block header1_link %}"{% url 'logout' %}"{% endblock %}
+{% block header1 %}LOGOUT{% endblock %}
+{% block header2_link %}"{% url 'users:myAccountPage' %}"{% endblock %}
+{% block header2 %}MY ACCOUNT{% endblock %}
+{% block header3_link %}"{% url 'dashboard' %}"{% endblock %}
+{% block header3 %}DASHBOARD{% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+	<ul id="tabs">
+		<li><a href="#problem" id="tab_1">Problem Statement</a></li>
+		<li><a href="#submission" id="tab_2">Submissions</a></li>
+		<li><a href="#tutorial" id="tab_3">Tutorial</a></li>
+		<li><a href="#leaderboard" id="tab_4">Leaderboard</a></li>
+		<li style="border-right: none;"><a href="#disqus" id="tab_5">Discussions</a></li>
+	</ul>
+
+	<div id="tab1" class="prb-desc">
+		<p>Write a code to find and attack enemy troops in the jungle.</p>
+		<h2>INTRODUCTION:</h2>
+		<p>You work with the CIA and are running a military campaign against the terrorists. After your successful mission to eradicate enemy bunkers through the jungle, you are now set upon locating enemy troops and destroying them down to the ground. These enemy troops are situated at various locations in the jungle and to destroy them you have an army of your own. The jungle is dense and you have no way of knowing where the troops may be hiding. You send out spies to discover these enemy troops. You then mobilise your army to attack weaker enemy troops. After a successful battle with a weaker army, the resources of your army increases allowing you to face tougher enemies. Devise a strategy that would enable you to defeat every enemy troop and emerging victorious with an army of maximum resource.</p>
+		<h2>DESCRIPTION:</h2>
+		<p>The jungle is assumed to be an image divided into regions of different foliage density that are shaded in different colours. All troops territories are denoted by circles, yours being white. The radius of these circles vary proportionally with the amount of resource that belongs to the army. <br \>
+		<img src="{% static 'sudocode/theraidtwo/discovered.jpg' %}" width="600" /> <br />
+		At the beginning of your quest, the entire jungle is undiscovered and is therefore blacked out. <br />
+		<img src="{% static 'sudocode/theraidtwo/initial.jpg' %}" width="600" /> <br />
+		To discover the jungle, your army assigns a spy which costs you few resources. You command the spy to travel to different regions of the jungle starting from the army base. While doing so, the spy uncovers tracts of the jungle and consumes resources. Travelling through regions of dense foliage would cost your greater resource. If your spy enters an enemy territory, he is captured and killed. To continue discovering the jungle, you must assign a new spy at the army base. You may also abandon an existing spy and assign a new spy at the army base.<br />
+		<img src="{% static 'sudocode/theraidtwo/query_spy.jpg' %}" width="600" /> <br />
+		You may then command your entire army to move through the jungle. This consumes an appreciably larger amount of resources than that consumed by a spy in the same region of foliage. If your army enters an enemy territory, a war is inevitable. The army with greater resources wins and its resource increased by half of the losing army’s resource.<br />
+		<img src="{% static 'sudocode/theraidtwo/query_army.jpg' %}" width="600" /> <br />
+		Your objective is to defeat every enemy in the jungle and return to the starting point with the maximum amount of resources.
+		</p>
+		<h2>EVENT RULES:</h2>
+		<p>The dimension of the image is 800 (width) x 600 (height).<br />
+    	The following constants are utilized in the problem:<br />
+    	<br />
+		<strong>Starting resource:</strong> The first line of input to the participant’s code would contain an integer, the starting resource of your army.<br />
+		<strong>Number of enemy troops:</strong> The second line of input to the participant’s code would contain an integer, the number of enemy troops in the jungle.<br />
+		<strong>Spy Assign Cost:</strong> The third line of input gives the cost of assigning a new spy after abandoning the previous.<br />
+		<strong>Travel Cost for each region for a spy and the army:</strong> The fourth line of input contains two integers, the resource consumed in travelling per pixel of the image by the spy and the army respectively.<br />
+		<br />
+    	The program can issue the following commands. Each command is a string that must be printed to the STDOUT.<br />
+		<strong>"ASSIGN SPY"</strong><br />
+		This command assigns a new spy at the base. However if a spy already exists, he must be abandoned before assigning a new spy.
+		<strong>"ABANDON SPY"</strong><br />
+		This command abandons the spy. If no spy exists, it does nothing.<br>
+		<strong>"MOVE SPY\n r c"</strong><br>
+		This command moves the spy along a straight path to the position with row r and column c. Here r and c are integers, 0 <= r <  800, 0<= c < 600<br />
+		<strong>"MOVE ARMY\n r c"</strong><br />
+		This command moves the army along a straight path to the position with row r and column c. Here r and c are integers, 0 <= r <  800, 0<= c < 600<br />
+		<strong>"SNAPSHOT"</strong><br />
+		This command would direct the simulator to generate a snapshot of the jungle that is discovered at that instant.<br />
+    	The code can now read the image file from “image.jpg” contained in the same directory.
+    	<br />
+	    All commands except "MOVE SPY\n r c" would invoke a “DONE” input to the participant’s program’s STDIN indicating the command has been processed.<br />
+
+	</div>
+		
+	<div id="tab2" class="prb-desc">
+		<span style="font-family: 'BigNoodle'; font-size: 18pt;"><b>NOTE</b></span><br><br>
+		<p>Submissions are being judged against . Submissions will be rejudged against the standard testcases during the fest Robotix 2015.<br>
+		Currently, submissions have a time limit of 20 seconds and a memory limit of 500 MB</p><br>
+		<form method="post" action="/submit/" enctype="multipart/form-data">
+			{% csrf_token %}
+			<input type='hidden' name="problem" value="1" /> 
+			<span style="font-family: 'BigNoodle'; font-size: 18pt;"><b>LANG</b></span><br /><br />
+			<select name="lang">
+				<option value="c">C</option>
+				<option value="cpp">C++</option>
+				<!-- <option value="java">JAVA</option> -->
+				<option value="python2">PYTHON2</option>
+				<option value="python3">PYTHON3</option>
+			</select>
+			<br>
+			<textarea id="code" name="source"></textarea><br />
+			<input type="submit" value="SUBMIT">
+		</form>
+	</div>
+		
+	<div id="tab3" class="prb-desc">
+		<p>This tutorial is intended to allow participants to submit responses to the Online Judge successfully.</p>
+		<h2>How are submissions compiled?</h2>
+		<p>Your code is tested by a computer automatically, not by a human being, and you have to write your code accordingly.<br>
+		The judge compiles the participant's code with the standard compilers for each language.<br>
+		The following libraries are allowed to be imported in the participant's code:<br>
+		Standard Math Library<br>
+		OpenCV<br>
+		Importing any other library would cause your submission to fail.</p>
+		<h2>How are submissions executed?</h2>
+		<p>The judge uses a sandboxed simulation environment to run the participant's code.<br>
+		Deviation from expected problem solving procedures would result in a wrong submission. Repetition of such behaviour would result in the participant being banned.</p>
+		<h2>What can my program output to the standard output?</h2>
+		<p>The participant's program can only output queries to the standard output. The format of a query is:<br>
+		<code>&lt;row-number&gt;*space*&lt;column-number&gt;*newline-character*</code><br>
+		For example: If the query is to the cell with row number 0 and column number 15, the corresponding query string would be:<br>
+		<code>"0 15\n"</code><br>
+		<emp><b>NOTE:</b></emp>Failing to write a newline-character would not flush the output buffer. The program must explicitly flush the output buffer in such cases. Failure to do so may result in a wrong submission.<br>
+		If the program outputs any random string other than a query, the submission would fail.<br></p>
+		<h2>How does my input vary?</h2>
+		<p> The first line of input would contain an integer n denoting the dimension of the square grid.
+		The second line of input would contain an integer m denoting the total number of bunkers in the square grid.
+		Every subsequent input would either be a string "YES\n" or "NO\n", the result to a query. Every query would have only one result.<br></p>
+	</div>
+		
+	<div id="tab4" class="prb-desc">
+		<p>Coming soon</p>
+	</div>
+		
+	<div id="tab5" class="prb-desc">
+
+		<div id="disqus_thread"></div>
+    		<script type="text/javascript">
+       			/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+       			var disqus_shortname = 'sudocode'; // required: replace example with your forum shortname
+       			/* * * DON'T EDIT BELOW THIS LINE * * */
+       			(function() {
+           			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+           			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+           			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+       			})();
+    		</script>
+    		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+	</div>
+	{% load staticfiles %}
+	<script src="{%static 'sudocode/js/jquery-1.11.0.min.js' %}"></script>
+	<script src="{% static 'sudocode/js/switch.js' %}"></script>
+{% endblock %}

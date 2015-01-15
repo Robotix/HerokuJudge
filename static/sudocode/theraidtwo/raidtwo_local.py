@@ -79,8 +79,8 @@ def main():
         shift=0)
 
     cv2.imwrite('image.jpg', participant_image)
-    # cv2.imshow('Participant', participant_image)
-    # cv2.waitKey(10)
+    cv2.imshow('Participant', participant_image)
+    cv2.waitKey(10)
 
     RUN_CMD = {
         'c': './',
@@ -110,9 +110,11 @@ def main():
             break
     
         input = p.stdout.readline()
+        print 'Query = '+input
 
         if input.find('ABANDON SPY') >= 0:
             spy['alive'] = False
+            print 'Spy abandoned'
             p.stdin.write("DONE\n")
             p.stdin.flush()
 
@@ -124,6 +126,7 @@ def main():
             army['resource'] -= spy['assign_cost']
             spy['R'] = army['R']
             spy['C'] = army['C']
+            print 'Spy assigned'
             p.stdin.write("DONE\n")
             p.stdin.flush()
             
@@ -171,11 +174,12 @@ def main():
                         if math.sqrt((enemy[i]['R'] - spy['R'])**2 + (enemy[i]['C'] - spy['C'])**2) < discover_radius:
                             spy['alive'] = False
                             p.stdin.write("Spy killed\n")
+                            print 'Spy killed'
                             break                           
 
                 army['resource'] -= math.sqrt((dr)**2 + (dc)**2)*travel_cost['spy']
-                # cv2.imshow('Participant', query_img)
-                # cv2.waitKey(10)
+                cv2.imshow('Participant', query_img)
+                cv2.waitKey(1)
 
             if spy['alive'] is True:
                 spy['R'] = int(r)
@@ -234,8 +238,8 @@ def main():
                 if army['resource'] <=10:
                     print 'You wasted all your resources in travelling without fighting wars'
                     sys.exit()
-                # cv2.imshow('Participant', query_img)
-                # cv2.waitKey(10)
+                cv2.imshow('Participant', query_img)
+                cv2.waitKey(1)
 
 
             army['R'] = int(r)
@@ -277,8 +281,8 @@ def main():
             p.stdin.write("DONE\n")
             p.stdin.flush()
         
-        # cv2.imshow('Participant', participant_image)    
-        # cv2.waitKey(500)
+        cv2.imshow('Participant', participant_image)    
+        cv2.waitKey(250)
 
 if __name__ == '__main__': 
     main()

@@ -20,6 +20,11 @@ def theraidone(request):
         return HttpResponseRedirect(reverse('index'))
     return render(request, 'sudocode/theraidone.html',{})
 
+def theraidtwo(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('index'))
+    return render(request, 'sudocode/theraidtwo.html',{})
+
 def logout(request):
     auth_logout(request)
     return HttpResponseRedirect(reverse('index'))
@@ -35,7 +40,7 @@ def submit(request):
             language= request.POST['lang'],
             stat= '',
             queries= 2500,
-            cpu= 05.000,
+            cpu= 99.999,
             memory= 999.99,)
         if submissionObject.checkSafe() is True:
             submissionObject.stat= 'Safe for compilation'

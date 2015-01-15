@@ -62,14 +62,21 @@ WSGI_APPLICATION = 'sudocode.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 # Parse database configuration from $DATABASE_URL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'da4abl57es557h',
+#         'USER': 'xeujnnexbxwkde',
+#         'PASSWORD': 'dEieJrTwnUA9zsNSdfRDoUmBnh',
+#         'HOST': 'ec2-54-204-40-140.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'da4abl57es557h',
-        'USER': 'xeujnnexbxwkde',
-        'PASSWORD': 'dEieJrTwnUA9zsNSdfRDoUmBnh',
-        'HOST': 'ec2-54-204-40-140.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 

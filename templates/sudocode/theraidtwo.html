@@ -51,15 +51,15 @@
 		<strong>"ABANDON SPY"</strong><br />
 		This command abandons the spy. If no spy exists, it does nothing.<br>
 		<strong>"MOVE SPY\n r c"</strong><br>
-		This command moves the spy along a straight path to the position with row r and column c. Here r and c are integers, 0 <= r <  800, 0<= c < 600<br />
+		This command moves the spy along a straight path to the position with row r and column c. Here r and c are integers, 0 &lt;= r &lt;  800, 0 &lt;= c &lt; 600<br />
 		<strong>"MOVE ARMY\n r c"</strong><br />
-		This command moves the army along a straight path to the position with row r and column c. Here r and c are integers, 0 <= r <  800, 0<= c < 600<br />
+		This command moves the army along a straight path to the position with row r and column c. Here r and c are integers, 0 &lt;= r &lt;  800, 0 &lt;= c &lt; 600<br />
 		<strong>"SNAPSHOT"</strong><br />
 		This command would direct the simulator to generate a snapshot of the jungle that is discovered at that instant.<br />
     	The code can now read the image file from “image.jpg” contained in the same directory.
     	<br />
 	    All commands except "MOVE SPY\n r c" would invoke a “DONE” input to the participant’s program’s STDIN indicating the command has been processed.<br />
-
+	    The command "MOVE SPY\n r c" would invoke "Spy killed" if the spy enters an enemy territory and is killed. Else, it invokes "DONE" to participant's STDIN.<br /> 
 	</div>
 		
 	<div id="tab2" class="prb-desc">

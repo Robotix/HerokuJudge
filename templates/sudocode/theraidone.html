@@ -47,6 +47,7 @@
 		<span style="font-family: 'BigNoodle'; font-size: 18pt;"><b>NOTE</b></span><br><br>
 		<p>Currently, all submissions are being tested against a dummy testcase. Submissions will be rejudged against the standard testcases during the fest Robotix 2015.<br>
 		Currently, submissions have a time limit of 10 seconds and a memory limit of 200 MB</p><br>
+
 		<form method="post" action="/submit/" enctype="multipart/form-data">
 			{% csrf_token %}
 			<input type='hidden' name="problem" value="1" /> 
@@ -60,7 +61,8 @@
 			</select>
 			<br>
 			<textarea id="code" name="source"></textarea><br />
-			<input type="submit" value="SUBMIT">
+			<!-- <input type="submit" value="SUBMIT"> -->
+			<span style="font-family: 'BigNoodle'; font-size: 18pt;"><b>Judge Under Upgrade.</b>Submissions to resume from tomorrow.</span><br><br>
 		</form>
 	</div>
 		

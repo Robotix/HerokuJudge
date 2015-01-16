@@ -105,7 +105,7 @@ class Submission(models.Model):
             self.save()
             return False
         else:
-            self.stat = 'Compiled successfully'
+            # self.stat = 'Compiled successfully'
             self.save()
             return True
 
@@ -147,6 +147,8 @@ class Submission(models.Model):
         
         rst = lorun.run(runcfg)
 
+        print rst 
+        
         fin.close()
         ftemp.close()
         ftemp = open('output.out')

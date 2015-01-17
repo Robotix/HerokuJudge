@@ -19,6 +19,7 @@ def submission(request, uniqueID):
 	return render(request, 'submission/submission.html', 
 		{'id': submissionObject.id,
 		'source': submissionObject.source,
+		'problem': submissionObject.problem,
 		'language': submissionObject.language,
 		'status': submissionObject.stat,
 		'queries': submissionObject.queries,

@@ -34,7 +34,11 @@
 	<h2>Status:</h2>
 	<p> {{ status }} </p>
 	{% if "Yay!" in status %}
-		<h2>Queries:</h2>
+		{% if problem == 1 %}
+			<h2>Queries:</h2>
+		{% else %}
+			<h2>Score:</h2>
+		{% endif %}
 		<p>{{ queries }}</p>
 		<h2>Time:</h2>
 		<p>{{ cpu }} s</p>

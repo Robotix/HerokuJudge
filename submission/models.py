@@ -133,61 +133,32 @@ class Submission(models.Model):
 
         SOURCE_FILE = str(self.id)+FILE_NAME[self.language]
 
-        # fileObject = open(SOURCE_FILE, 'w')
-        # fileObject.write(self.source)
-        # fileObject.close()
-        
-        # fileObject = open('CMakeLists.txt', 'w')
-        # fileObject.write('cmake_minimum_required(VERSION 2.8)\n' +
-        #     'project( main )\n' +
-        #     'find_package( OpenCV REQUIRED )\n' +
-        #     'add_executable( main %s )\n' %(SOURCE_FILE) +
-        #     'target_link_libraries( main ${OpenCV_LIBS} )\n')
-        # fileObject.close()
-
-        # buildProcess = subprocess.Popen(
-        #     'cmake .',
-        #     shell=True,
-        #     stdout=subprocess.PIPE,
-        #     stderr=subprocess.PIPE)
-        # error, out = buildProcess.communicate()
-
-        # if buildProcess.returncode != 0: 
-        #     self.stat = 'Compilation error:\n', out
-        #     self.save()
-        #     return False
-        
-        # buildProcess = subprocess.Popen(
-        #     'make',
-        #     shell=True,
-        #     stdout=subprocess.PIPE,
-        #     stderr=subprocess.PIPE)
-        # error, out = buildProcess.communicate()
-
-        # if buildProcess.returncode != 0: 
-        #     self.stat = 'Compilation error:\n', out
-        #     self.save()
-        #     return False
-        # else:
-        #     self.stat = 'Compiled successfully'
-        #     self.save()
-        #     return True
-
-        BUILD_CMD = {
-            'c': 'g++ `pkg-config --cflags opencv` -o main %s `pkg-config --libs opencv`' %(SOURCE_FILE),
-            'cpp': 'g++ `pkg-config --cflags opencv` -o main %s `pkg-config --libs opencv`' %(SOURCE_FILE),
-            # 'cpp':'g++ -o main `pkg-config opencv --cflags` `pkg-config opencv --libs` ./',
-            # 'java': 'javac ./Main.java',
-            'python2': 'python2 -m py_compile ./',
-            'python3': 'python3 -m py_compile ./',
-        }
-
-        fileObject = open(str(self.id)+FILE_NAME[self.language], 'w')
+        fileObject = open(SOURCE_FILE, 'w')
         fileObject.write(self.source)
         fileObject.close()
-            
+        
+        fileObject = open('CMakeLists.txt', 'w')
+        fileObject.write('cmake_minimum_required(VERSION 2.8)\n' +
+            'project( main )\n' +
+            'find_package( OpenCV REQUIRED )\n' +
+            'add_executable( main %s )\n' %(SOURCE_FILE) +
+            'target_link_libraries( main ${OpenCV_LIBS} )\n')
+        fileObject.close()
+
         buildProcess = subprocess.Popen(
-            BUILD_CMD[self.language],
+            'cmake .',
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE)
+        error, out = buildProcess.communicate()
+
+        if buildProcess.returncode != 0: 
+            self.stat = 'Compilation error:\n', out
+            self.save()
+            return False
+        
+        buildProcess = subprocess.Popen(
+            'make',
             shell=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)
@@ -201,6 +172,37 @@ class Submission(models.Model):
             self.stat = 'Compiled successfully'
             self.save()
             return True
+
+
+
+        # BUILD_CMD = {
+        #     'c': 'g++ `pkg-config --cflags opencv` -o main %s `pkg-config --libs opencv`' %(SOURCE_FILE),
+        #     'cpp': 'g++ `pkg-config --cflags opencv` -o main %s `pkg-config --libs opencv`' %(SOURCE_FILE),
+        #     # 'cpp':'g++ -o main `pkg-config opencv --cflags` `pkg-config opencv --libs` ./',
+        #     # 'java': 'javac ./Main.java',
+        #     'python2': 'python2 -m py_compile ./',
+        #     'python3': 'python3 -m py_compile ./',
+        # }
+
+        # fileObject = open(str(self.id)+FILE_NAME[self.language], 'w')
+        # fileObject.write(self.source)
+        # fileObject.close()
+            
+        # buildProcess = subprocess.Popen(
+        #     BUILD_CMD[self.language],
+        #     shell=True,
+        #     stdout=subprocess.PIPE,
+        #     stderr=subprocess.PIPE)
+        # error, out = buildProcess.communicate()
+
+        # if buildProcess.returncode != 0: 
+        #     self.stat = 'Compilation error:\n', out
+        #     self.save()
+        #     return False
+        # else:
+        #     self.stat = 'Compiled successfully'
+        #     self.save()
+        #     return True
 
     def raidone_simulate(self):
 

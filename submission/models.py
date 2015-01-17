@@ -71,13 +71,13 @@ class Submission(models.Model):
             return True
 
     def compile(self):
-        if self.language == 1:
+        if self.problem == 1:
             return self.raidone_compile()
         else:
             return self.raidtwo_compile()
 
     def simulate(self):
-        if self.language == 1:
+        if self.problem == 1:
             self.raidone_simulate()
         else:
             self.raidtwo_simulate()

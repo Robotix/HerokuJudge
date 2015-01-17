@@ -12,7 +12,6 @@ def submission(request, uniqueID):
 	if request.user.username != submissionObject.user:
 		if request.user.username != 'admin':
 			raise Http404
-
 	if submissionObject.stat == 'Safe for compilation' or submissionObject.stat == 'Compiled successfully':
 		if submissionObject.compile():
 			submissionObject.simulate()

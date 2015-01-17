@@ -105,6 +105,7 @@ def main():
         if enemy_count == 0:
             army['resource'] -= int(math.sqrt((army['R']-start_position['R'])**2 + (army['C']-start_position['C'])**2)*travel_cost['army'])
             print 'Yay! You emerged victorius with %d resources left' %(army['resource'])
+            print str(int(army['resource']))
             sys.exit()
         if p.poll() != None:            #Participant killed the program
             break
@@ -170,7 +171,8 @@ def main():
                     if enemy[i]['alive'] is True:
                         if math.sqrt((enemy[i]['R'] - spy['R'])**2 + (enemy[i]['C'] - spy['C'])**2) < discover_radius:
                             spy['alive'] = False
-                            p.stdin.write("Spy killed\n")
+                            p.stdin.write('Spy_killed\n')
+                            p.stdin.flush()
                             break                           
 
                 army['resource'] -= math.sqrt((dr)**2 + (dc)**2)*travel_cost['spy']
@@ -181,7 +183,7 @@ def main():
                 spy['R'] = int(r)
                 spy['C'] = int(c)
                 p.stdin.write("DONE\n")
-            p.stdin.flush()
+                p.stdin.flush()
 
         elif input.find('MOVE ARMY') >= 0:
             r,c = p.stdout.readline().split()

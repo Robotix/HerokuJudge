@@ -1,2 +1,31 @@
+Language:
 cpp
+Executable:
 main
+Army R C and resource:
+100
+70
+7500
+Number of enemies:
+5
+Enemies R C and resource:
+125
+400
+5000
+120
+667
+5000
+290 
+675 
+4000
+375
+485
+4000
+438
+62
+5000
+Travel Cost Army Spy:
+0.5
+0.01
+Spy Assign Cost:
+10

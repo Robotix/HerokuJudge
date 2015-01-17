@@ -101,6 +101,7 @@ def main():
     p.stdin.write("%d %d\n" % (travel_cost['spy'], travel_cost['army']))
     p.stdin.flush()
 
+
     while True:
         if enemy_count == 0:
             army['resource'] -= int(math.sqrt((army['R']-start_position['R'])**2 + (army['C']-start_position['C'])**2)*travel_cost['army'])
@@ -281,7 +282,7 @@ def main():
             p.stdin.write("DONE\n")
             p.stdin.flush()
         
-        cv2.imshow('Participant', participant_image)    
+        cv2.imshow('Participant', participant_image) 
         cv2.waitKey(250)
 
 if __name__ == '__main__': 

@@ -136,6 +136,7 @@ def main():
             r = float(r)
             c = float(c)
 
+<<<<<<< HEAD
             distance = math.sqrt((r - spy['R'])**2 + (c - spy['C'])**2)
             if(abs(r - spy['R']) < iterate_dist/2):
                 dr = 0
@@ -166,6 +167,14 @@ def main():
                     thickness=-1,
                     lineType=8,
                     shift=0)
+=======
+            query_rect = [(army['R'] - 40*(r-army['R'])/dist, army['C'] + 40*(c-army['C'])/dist),
+                          (r - 40*(r-army['R'])/dist, c + 40*(c-army['C'])/dist),
+                          (r + 40*(r-army['R'])/dist, c + 40*(c-army['C'])/dist),
+                          (army['R'] + 40*(r-army['R'])/dist, army['C'] + 40*(c-army['C'])/dist),]
+
+            print query_rect
+>>>>>>> parent of e28c154... working query
 
                 for i in enemy:
                     if enemy[i]['alive'] is True:

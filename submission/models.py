@@ -87,8 +87,6 @@ class Submission(models.Model):
         BUILD_CMD = {
             'c': 'gcc -o main -Wall -lm -O2 -std=c99 --static ./',
             'cpp': 'g++ -O2 -Wall -lm --static  -o main ./',
-            # 'cpp':'g++ -o main `pkg-config opencv --cflags` `pkg-config opencv --libs` ./',
-            # 'java': 'javac ./Main.java',
             'python2': 'python2 -m py_compile ./',
             'python3': 'python3 -m py_compile ./',
         }
@@ -173,37 +171,6 @@ class Submission(models.Model):
             self.save()
             return True
 
-
-
-        # BUILD_CMD = {
-        #     'c': 'g++ `pkg-config --cflags opencv` -o main %s `pkg-config --libs opencv`' %(SOURCE_FILE),
-        #     'cpp': 'g++ `pkg-config --cflags opencv` -o main %s `pkg-config --libs opencv`' %(SOURCE_FILE),
-        #     # 'cpp':'g++ -o main `pkg-config opencv --cflags` `pkg-config opencv --libs` ./',
-        #     # 'java': 'javac ./Main.java',
-        #     'python2': 'python2 -m py_compile ./',
-        #     'python3': 'python3 -m py_compile ./',
-        # }
-
-        # fileObject = open(str(self.id)+FILE_NAME[self.language], 'w')
-        # fileObject.write(self.source)
-        # fileObject.close()
-            
-        # buildProcess = subprocess.Popen(
-        #     BUILD_CMD[self.language],
-        #     shell=True,
-        #     stdout=subprocess.PIPE,
-        #     stderr=subprocess.PIPE)
-        # error, out = buildProcess.communicate()
-
-        # if buildProcess.returncode != 0: 
-        #     self.stat = 'Compilation error:\n', out
-        #     self.save()
-        #     return False
-        # else:
-        #     self.stat = 'Compiled successfully'
-        #     self.save()
-        #     return True
-
     def raidone_simulate(self):
 
         fin = open('input.in', 'w')
@@ -242,8 +209,6 @@ class Submission(models.Model):
         
         rst = lorun.run(runcfg)
 
-        print rst 
-        
         fin.close()
         ftemp.close()
         ftemp = open('output.out')

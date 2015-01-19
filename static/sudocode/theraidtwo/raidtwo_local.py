@@ -177,7 +177,7 @@ def main():
                     if enemy[i]['alive'] is True:
                         if math.sqrt((enemy[i]['R'] - spy['R'])**2 + (enemy[i]['C'] - spy['C'])**2) < discover_radius:
                             spy['alive'] = False
-                            p.stdin.write("Spy killed\n")
+                            p.stdin.write("Spy_killed\n")
                             print 'Spy killed'
                             break                           
 

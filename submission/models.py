@@ -65,16 +65,15 @@ class Submission(models.Model):
             return True
         
         if self.language in ['c', 'cpp']:
-        
+            
+            if self.source.find('highgui') >= 0:
+                return False
             if self.source.find('system') >= 0:
                 return False
             return True
 
     def compile(self):
-        if self.problem == 1:
-            return self.raidone_compile()
-        else:
-            return self.raidtwo_compile()
+        return self.raidone_compile()
 
     def simulate(self):
         if self.problem == 1:
@@ -105,58 +104,6 @@ class Submission(models.Model):
             
         buildProcess = subprocess.Popen(
             BUILD_CMD[self.language]+str(self.id)+FILE_NAME[self.language],
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-        error, out = buildProcess.communicate()
-
-        if buildProcess.returncode != 0: 
-            self.stat = 'Compilation error:\n', out
-            self.save()
-            return False
-        else:
-            self.stat = 'Compiled successfully'
-            self.save()
-            return True
-
-    def raidtwo_compile(self):
-
-        FILE_NAME = {
-            'c': 'main.c',
-            'cpp': 'main.cpp',
-            # 'java': 'Main,java',
-            'python2': 'main.py',
-            'python3': 'main.py',
-        }
-
-        SOURCE_FILE = str(self.id)+FILE_NAME[self.language]
-
-        fileObject = open(SOURCE_FILE, 'w')
-        fileObject.write(self.source)
-        fileObject.close()
-        
-        fileObject = open('CMakeLists.txt', 'w')
-        fileObject.write('cmake_minimum_required(VERSION 2.8)\n' +
-            'project( main )\n' +
-            'find_package( OpenCV REQUIRED )\n' +
-            'add_executable( main %s )\n' %(SOURCE_FILE) +
-            'target_link_libraries( main ${OpenCV_LIBS} )\n')
-        fileObject.close()
-
-        buildProcess = subprocess.Popen(
-            'cmake .',
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE)
-        error, out = buildProcess.communicate()
-
-        if buildProcess.returncode != 0: 
-            self.stat = 'Compilation error:\n', out
-            self.save()
-            return False
-        
-        buildProcess = subprocess.Popen(
-            'make',
             shell=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE)

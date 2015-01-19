@@ -15,8 +15,8 @@
 
 	<ul id="tabs">
 		<li><a href="#problem" id="tab_1">Problem Statement</a></li>
-		<li><a href="#simulator" id="tab_2">Simulation</a></li>
-		<li><a href="#tutorial" id="tab_3">Tutorial</a></li>
+		<li><a href="#simulator" id="tab_2">Submission</a></li>
+		<li><a href="#tutorial" id="tab_3">Simulation</a></li>
 		<li><a href="#leaderboard" id="tab_4">Leaderboard</a></li>
 		<li style="border-right: none;"><a href="#disqus" id="tab_5">Discussions</a></li>
 	</ul>
@@ -82,6 +82,10 @@
 			<input type="submit" value="SUBMIT">
 		</form>
 		<br><br>
+
+	</div>
+		
+	<div id="tab3" class="prb-desc">
 		<span style="font-family: 'BigNoodle'; font-size: 18pt;"><b>SIMULATOR</b></span><br><br>
 		The simulator can be run locally for testing.
 		The simulator is a Python program that enables you to see your program in action.<br>
@@ -98,31 +102,6 @@
 		<a href="{% static 'sudocode/theraidtwo/main_windows.exe' %}">For Windows users</a><br>
 		The terminal command to run the simulator after saving the above four files in a folder is:<br>
 			python raidtwo_local.py < input.in
-	</div>
-		
-	<div id="tab3" class="prb-desc">
-		<p>This tutorial is intended to allow participants to submit responses to the Online Judge successfully.</p>
-		<h2>How are submissions compiled?</h2>
-		<p>Your code is tested by a computer automatically, not by a human being, and you have to write your code accordingly.<br>
-		The judge compiles the participant's code with the standard compilers for each language.<br>
-		The following libraries are allowed to be imported in the participant's code:<br>
-		Standard Math Library<br>
-		OpenCV<br>
-		Importing any other library would cause your submission to fail.</p>
-		<h2>How are submissions executed?</h2>
-		<p>The judge uses a sandboxed simulation environment to run the participant's code.<br>
-		Deviation from expected problem solving procedures would result in a wrong submission. Repetition of such behaviour would result in the participant being banned.</p>
-		<h2>What can my program output to the standard output?</h2>
-		<p>The participant's program can only output queries to the standard output. The format of a query is:<br>
-		<code>&lt;row-number&gt;*space*&lt;column-number&gt;*newline-character*</code><br>
-		For example: If the query is to the cell with row number 0 and column number 15, the corresponding query string would be:<br>
-		<code>"0 15\n"</code><br>
-		<emp><b>NOTE:</b></emp>Failing to write a newline-character would not flush the output buffer. The program must explicitly flush the output buffer in such cases. Failure to do so may result in a wrong submission.<br>
-		If the program outputs any random string other than a query, the submission would fail.<br></p>
-		<h2>How does my input vary?</h2>
-		<p> The first line of input would contain an integer n denoting the dimension of the square grid.
-		The second line of input would contain an integer m denoting the total number of bunkers in the square grid.
-		Every subsequent input would either be a string "YES\n" or "NO\n", the result to a query. Every query would have only one result.<br></p>
 	</div>
 		
 	<div id="tab4" class="prb-desc">

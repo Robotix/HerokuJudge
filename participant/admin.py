@@ -1,6 +1,5 @@
 from django.contrib import admin
-from team.models import Participant
-
+from participant.models import Participant
 # Register your models here.
 
 class ParticipantAdmin(admin.ModelAdmin):
@@ -9,12 +8,12 @@ class ParticipantAdmin(admin.ModelAdmin):
         'firstName',
         'lastName',
         'mobileNo',
-        'emailID',)
+        'user',)
     list_filter = (
         'id',
         'firstName',
         'lastName',
         'mobileNo',
-        'emailID',)
+        'user',)
 
 admin.site.register(Participant, ParticipantAdmin)

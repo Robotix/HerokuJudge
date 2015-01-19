@@ -15,7 +15,7 @@
 
 	<ul id="tabs">
 		<li><a href="#problem" id="tab_1">Problem Statement</a></li>
-		<li><a href="#submission" id="tab_2">Submissions</a></li>
+		<li><a href="#simulator" id="tab_2">Simulation</a></li>
 		<li><a href="#tutorial" id="tab_3">Tutorial</a></li>
 		<li><a href="#leaderboard" id="tab_4">Leaderboard</a></li>
 		<li style="border-right: none;"><a href="#disqus" id="tab_5">Discussions</a></li>
@@ -64,8 +64,8 @@
 		
 	<div id="tab2" class="prb-desc">
 		<span style="font-family: 'BigNoodle'; font-size: 18pt;"><b>NOTE</b></span><br><br>
-		<p>Submissions are being judged against . Submissions will be rejudged against the standard testcases during the fest Robotix 2015.<br>
-		Currently, submissions have a time limit of 20 seconds and a memory limit of 500 MB</p><br>
+		<p>Since programs that rely on OpenCV library cannot be compiled on the judge, all programs that include OpenCV will be judged manually.<br />
+		Programs that do not include libraries can still be judged.<br>
 		<form method="post" action="/submit/" enctype="multipart/form-data">
 			{% csrf_token %}
 			<input type='hidden' name="problem" value="2" /> 
@@ -81,6 +81,23 @@
 			<textarea id="code" name="source"></textarea><br />
 			<input type="submit" value="SUBMIT">
 		</form>
+		<br><br>
+		<span style="font-family: 'BigNoodle'; font-size: 18pt;"><b>SIMULATOR</b></span><br><br>
+		The simulator can be run locally for testing.
+		The simulator is a Python program that enables you to see your program in action.<br>
+		Here is the link to the <a href="{% static 'sudocode/theraidtwo/raidtwo_local.py' %}"> SIMULATOR </a>.<br>
+		The simulator has the following dependencies:<br>
+		--cv2<br>
+		--numpy<br>
+		You can get these dependencies installed on Windows as explained in <a href="http://opencvpython.blogspot.in/2012/05/install-opencv-in-windows-for-python.html">this blogpost.</a><br>
+		The simulator requires an input file with configurations and a base image.
+		Here is a sample <a href="{% static 'sudocode/theraidtwo/input.in' %}">input file</a> and a sample <a href="{% static 'sudocode/theraidtwo/raid2_test.jpg' %}">base image.</a><br>
+		The configurations can be tweaked as per requirement.<br><br>
+		Executables that work randomly can be found here.<br>
+		<a href="{% static 'sudocode/theraidtwo/main' %}">For Unix users</a><br>
+		<a href="{% static 'sudocode/theraidtwo/main_windows.exe' %}">For Windows users</a><br>
+		The terminal command to run the simulator after saving the above four files in a folder is:<br>
+			python raidtwo_local.py < input.in
 	</div>
 		
 	<div id="tab3" class="prb-desc">

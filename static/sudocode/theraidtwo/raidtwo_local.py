@@ -1,10 +1,12 @@
 import os, sys, subprocess, cv2, math
+from random import randint
 import numpy as np
 
 def main():
     full_img = cv2.imread('raid2_test.jpg',1)                               #TestImage
     query_img = np.zeros((600,800,3), np.uint8)                                   
 
+    sys.stdin.readline() 
     sys.stdin.readline()                                            # Language:
     LANG = sys.stdin.readline().rstrip()
     
@@ -33,6 +35,7 @@ def main():
             'R': int(sys.stdin.readline()), 
             'C': int(sys.stdin.readline()),
             'resource': int(sys.stdin.readline()),
+            'colour': (randint(0,255),randint(0,255),randint(0,255)),
             'alive': True,
         }
 
@@ -265,13 +268,11 @@ def main():
             # Draw enemy circles
             for i in enemy:
                 if enemy[i]['alive'] is True:
-                    colour = full_img[enemy[i]['R']+enemy[i]['resource']/r2r_ratio+2,enemy[i]['C']+enemy[i]['resource']/r2r_ratio+2]
-                    colour = (255,255,255) - colour
                     cv2.circle(
                         img= participant_image, 
                         center= (enemy[i]['C'], enemy[i]['R']), 
                         radius= int(enemy[i]['resource']/r2r_ratio),
-                        color= colour,
+                        color= enemy[i]['colour'],
                         thickness=-1, 
                         lineType=8, 
                         shift=0)

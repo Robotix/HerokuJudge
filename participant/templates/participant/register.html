@@ -1,0 +1,16 @@
+{% extends 'sudocode/base_site.html' %}
+
+{% block title %}SUBMISSION{% endblock %}
+
+{% block header1_link %}"{% url 'logout' %}"{% endblock %}
+{% block header1 %}LOGOUT{% endblock %}
+{% block header2_link %}"{% url 'users:myAccountPage' %}"{% endblock %}
+{% block header2 %}MY ACCOUNT{% endblock %}
+{% block header3_link %}"{% url 'dashboard' %}"{% endblock %}
+{% block header3 %}DASHBOARD{% endblock %}
+
+{% block content %}
+<div id="content">
+
+</div>
+{% endblock %}

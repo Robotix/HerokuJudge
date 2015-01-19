@@ -42,6 +42,9 @@ INSTALLED_APPS = (
     'django_pygments',
     'submission',
     'users',
+    'testcases_theraidone',
+    'submission_theraidone',
+    'participant'
 )
 
 MIDDLEWARE_CLASSES = (

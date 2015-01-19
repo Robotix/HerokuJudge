@@ -1,14 +1,15 @@
+DO NOT CHANGE THE FORMATTING. MAKE CHANGES IN-PLACE
 Language:
 c
-Executable:
+Executable(name of your program executable):
 main
-Army R C and resource:
+Army R C and resource(one per line):
 100
 70
 7500
 Number of enemies:
 5
-Enemies R C and resource:
+Enemies R C and resource(one per line):
 125
 400
 5000
@@ -25,7 +26,7 @@ Enemies R C and resource:
 62
 5000
 Travel Cost Army Spy:
-1
-0.05
+0.5
+0.01
 Spy Assign Cost:
 10

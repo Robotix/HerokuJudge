@@ -18,7 +18,10 @@ def dashboard(request):
 def theraidone(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect(reverse('index'))
-    return render(request, 'sudocode/theraidone.html',{})
+    return render(
+        request, 
+        'sudocode/theraidone.html',
+        {})
 
 def theraidtwo(request):
     if not request.user.is_authenticated():

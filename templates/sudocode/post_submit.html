@@ -16,9 +16,10 @@
 		<h2>SUBMISSION SUCCESSFUL</h2>
 		<p class="prb-statement">
 			<span class="prb-meta"></span><br /><br />
-			Your submission was submitted to the judge for evaluation.
+			Your submission was submitted to the judge for evaluation. It will be evaluated locally and updated in the leaderboard.
 		</p><br>
-		<a class="gen-btn" href="/submission/{{ id }}">VIEW STATUS</a>
+		<a class="gen-btn" href="{% url 'dashboard' %}">DASHBOARD</a>
+		<!-- <a class="gen-btn" href="/submission/{{ id }}">VIEW STATUS</a> -->
 	{% else %}
 		<h2>SUBMISSION FAILED</h2>
 		<p class="prb-statement">

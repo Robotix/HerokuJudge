@@ -156,6 +156,8 @@ class Submission(models.Model):
         
         rst = lorun.run(runcfg)
 
+        print rst
+        
         fin.close()
         ftemp.close()
         ftemp = open('output.out')
@@ -229,7 +231,7 @@ class Submission(models.Model):
             'args':['python','raidtwo.py'],
             'fd_in':fin.fileno(),
             'fd_out':ftemp.fileno(),
-            'timelimit':5000, #in MS
+            'timelimit':10000, #in MS
             'memorylimit':200000, #in KB
         }
         

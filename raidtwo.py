@@ -1,52 +1,56 @@
-import os, sys, subprocess, cv2, math
+import os
+import sys
+import subprocess
+import math
 from random import randint
+
+import cv2
 import numpy as np
 
-def main():
-    full_img = cv2.imread('raid2_test.jpg',1)                               #TestImage
-    query_img = np.zeros((600,800,3), np.uint8)                                   
 
-    sys.stdin.readline()                                            # Language:
+def main():
+    full_img = cv2.imread('raid2_test.jpg', 1)
+    query_img = np.zeros((600, 800, 3), np.uint8)
+    sys.stdin.readline()
     LANG = sys.stdin.readline().rstrip()
-    
-    sys.stdin.readline()                                            # Executable:
+    sys.stdin.readline()
     FILE = sys.stdin.readline().rstrip()
 
-    sys.stdin.readline()                                          # Army R C and resource:
-    
+    sys.stdin.readline()
+
     start_position = {
         'R': int(sys.stdin.readline()),
         'C': int(sys.stdin.readline()),
     }
-    army = {                                        
+    army = {
         'R': start_position['R'],
         'C': start_position['C'],
         'resource': int(sys.stdin.readline()),
     }
-    
-    sys.stdin.readline()                                            # Number of enemies:
+
+    sys.stdin.readline()
     enemy_count = int(sys.stdin.readline())
 
-    sys.stdin.readline()                                            # Enemies R C and resource:
+    sys.stdin.readline()
     enemy = {}
     for i in range(enemy_count):
         enemy[i] = {
-            'R': int(sys.stdin.readline()), 
+            'R': int(sys.stdin.readline()),
             'C': int(sys.stdin.readline()),
             'resource': int(sys.stdin.readline()),
-            'colour': (randint(0,255),randint(0,255),randint(0,255)),
+            'colour': (randint(0, 255), randint(0, 255), randint(0, 255)),
             'alive': True,
         }
 
-    sys.stdin.readline()                                            # Travel Cost Army Spy:
+    sys.stdin.readline()
     travel_cost = {
         'army': float(sys.stdin.readline()),
         'spy': float(sys.stdin.readline()),
     }
 
     # Initializing SPY status
-    sys.stdin.readline()                                            # Spy Assign Cost:
-    spy = {                                                        
+    sys.stdin.readline()
+    spy = {
         'alive': False,
         'R': army['R'],
         'C': army['C'],
@@ -54,32 +58,32 @@ def main():
     }
 
     # Constants
-    r2r_ratio = 250                                                  # Resource to radius ratio
+    r2r_ratio = 250
     discover_radius = 20
     iterate_dist = 10
 
     # Uncover area around army
     cv2.circle(
-        img= query_img, 
-        center= (army['C'], army['R']), 
-        radius= int(1.5*army['resource']/r2r_ratio),
-        color= [255,255,255], 
+        img=query_img,
+        center=(army['C'], army['R']),
+        radius=int(1.5*army['resource']/r2r_ratio),
+        color=[255, 255, 255],
         thickness=-1,
         lineType=8,
-        shift=0)
-    
+        shift=0
+    )
     participant_image = np.bitwise_and(query_img, full_img)
 
-    #Draw army circle
+    # Draw army circle
     cv2.circle(
-        img= participant_image, 
-        center= (army['C'], army['R']), 
-        radius= army['resource']/r2r_ratio,
-        color= [255,255,255], 
+        img=participant_image,
+        center=(army['C'], army['R']),
+        radius=army['resource']/r2r_ratio,
+        color=(255, 255, 255),
         thickness=-1,
         lineType=8,
-        shift=0)
-
+        shift=0
+    )
     cv2.imwrite('image.jpg', participant_image)
 
     RUN_CMD = {
@@ -88,29 +92,32 @@ def main():
         'python2': 'python2 ./',
         'python3': 'python3 ./',
     }
-    
     p = subprocess.Popen(
         RUN_CMD[LANG]+FILE,
         shell=False,
         stdout=subprocess.PIPE,
-        stdin=subprocess.PIPE)  
+        stdin=subprocess.PIPE
+    )
 
     p.stdin.write("%d\n" % (army['resource']))
     p.stdin.write("%d\n" % (enemy_count))
-    p.stdin.write("%d\n" % (spy['assign_cost']))                     
+    p.stdin.write("%d\n" % (spy['assign_cost']))
     p.stdin.write("%d %d\n" % (travel_cost['spy'], travel_cost['army']))
     p.stdin.flush()
 
-
     while True:
         if enemy_count == 0:
-            army['resource'] -= int(math.sqrt((army['R']-start_position['R'])**2 + (army['C']-start_position['C'])**2)*travel_cost['army'])
-            print 'Yay! You emerged victorius with %d resources left' %(army['resource'])
+            army['resource'] -= \
+                int(math.sqrt((army['R']-start_position['R'])**2 +
+                    (army['C']-start_position['C'])**2)*travel_cost['army'])
+            print 'Yay! You emerged victorius with %d resources left' \
+                % (army['resource'])
             print str(int(army['resource']))
             sys.exit()
-        if p.poll() != None:            #Participant killed the program
+        if p.poll() != None:
+            # Participant killed the program
             break
-    
+
         input = p.stdout.readline()
 
         if input.find('ABANDON SPY') >= 0:
@@ -128,9 +135,9 @@ def main():
             spy['C'] = army['C']
             p.stdin.write("DONE\n")
             p.stdin.flush()
-            
+
         elif input.find('MOVE SPY') >= 0:
-            r,c = p.stdout.readline().split()
+            r, c = p.stdout.readline().split()
             if spy['alive'] is False:
                 print 'You tried moving a spy without assigning him'
                 sys.exit()
@@ -152,30 +159,33 @@ def main():
                     dr = -iterate_dist
             else:
                 dr = (r - spy['R'])*iterate_dist/distance
-                dc = (c - spy['C'])*iterate_dist/distance            
-            
-            while abs(r-spy['R']) > iterate_dist or abs(c-spy['C']) > iterate_dist:
+                dc = (c - spy['C'])*iterate_dist/distance
+
+            while abs(r-spy['R']) > iterate_dist \
+                    or abs(c-spy['C']) > iterate_dist:
                 if spy['alive'] is False:
                     break
                 spy['R'] += dr
                 spy['C'] += dc
                 cv2.circle(
-                    img= query_img,
-                    center= (int(spy['C']), int(spy['R'])), 
-                    radius= discover_radius,
-                    color= [255,255,255], 
+                    img=query_img,
+                    center=(int(spy['C']), int(spy['R'])),
+                    radius=discover_radius,
+                    color=(255, 255, 255),
                     thickness=-1,
                     lineType=8,
-                    shift=0)
-
+                    shift=0
+                )
                 for i in enemy:
                     if enemy[i]['alive'] is True:
-                        if math.sqrt((enemy[i]['R'] - spy['R'])**2 + (enemy[i]['C'] - spy['C'])**2) < discover_radius:
+                        dist = ((enemy[i]['R'] - spy['R'])**2 +
+                                (enemy[i]['C'] - spy['C'])**2)
+                        if math.sqrt(dist) < discover_radius:
                             spy['alive'] = False
                             p.stdin.write("Spy_killed\n")
-                            break                           
-
-                army['resource'] -= math.sqrt((dr)**2 + (dc)**2)*travel_cost['spy']
+                            break
+                army['resource'] -= \
+                    math.sqrt((dr)**2 + (dc)**2)*travel_cost['spy']
 
             if spy['alive'] is True:
                 spy['R'] = int(r)
@@ -184,7 +194,7 @@ def main():
             p.stdin.flush()
 
         elif input.find('MOVE ARMY') >= 0:
-            r,c = p.stdout.readline().split()
+            r, c = p.stdout.readline().split()
             r = float(r)
             c = float(c)
             distance = math.sqrt((r - army['R'])**2 + (c - army['C'])**2)
@@ -202,25 +212,29 @@ def main():
                     dr = -iterate_dist
             else:
                 dr = (r - army['R'])*iterate_dist/distance
-                dc = (c - army['C'])*iterate_dist/distance    
-            
+                dc = (c - army['C'])*iterate_dist/distance
+
             radius_army = int(1.5*army['resource']/r2r_ratio)
 
-            while abs(r-army['R']) > iterate_dist or abs(c-army['C']) > iterate_dist:
+            while abs(r-army['R']) > iterate_dist or \
+                    abs(c-army['C']) > iterate_dist:
                 army['R'] += dr
                 army['C'] += dc
                 cv2.circle(
-                    img= query_img,
-                    center=(int(army['C']), int(army['R'])), 
+                    img=query_img,
+                    center=(int(army['C']), int(army['R'])),
                     radius=radius_army,
-                    color=[255,255,255], 
+                    color=(255, 255, 255),
                     thickness=-1,
                     lineType=8,
-                    shift=0)
+                    shift=0
+                )
 
                 for i in enemy:
                     if enemy[i]['alive'] is True:
-                        if math.sqrt((enemy[i]['R'] - army['R'])**2 + (enemy[i]['C'] - army['C'])**2) < radius_army:
+                        dist = (enemy[i]['R'] - army['R'])**2 + \
+                            (enemy[i]['C'] - army['C'])**2
+                        if math.sqrt() < radius_army:
                             if army['resource'] >= enemy[i]['resource']:
                                 enemy[i]['alive'] = False
                                 enemy_count -= 1

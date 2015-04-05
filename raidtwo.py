@@ -211,9 +211,9 @@ def main():
                 army['C'] += dc
                 cv2.circle(
                     img= query_img,
-                    center= (int(army['C']), int(army['R'])), 
-                    radius= radius_army,
-                    color= [255,255,255], 
+                    center=(int(army['C']), int(army['R'])), 
+                    radius=radius_army,
+                    color=[255,255,255], 
                     thickness=-1,
                     lineType=8,
                     shift=0)
@@ -226,52 +226,50 @@ def main():
                                 enemy_count -= 1
                                 army['resource'] += enemy[i]['resource']/2
                             else:
-                                print 'You failed in your conquest to win over the world. Your resources (%d) was no match against your opponents (%d)' %(army['resource'], enemy[i]['resource'])
+                                print 'You failed in your conquest to win over the world. \
+                                    Your resources (%d) was no match against your opponents (%d)'\
+                                    % (army['resource'], enemy[i]['resource'])
                                 sys.exit()
-
-                army['resource'] -= int(math.sqrt((dr)**2 + (dc)**2))*travel_cost['army']
-                
-                if army['resource'] <=10:
-                    print 'You wasted all your resources in travelling without fighting wars'
+                army['resource'] -= \
+                    int(math.sqrt((dr)**2 + (dc)**2))*travel_cost['army']
+                if army['resource'] <= 10:
+                    print 'You wasted all your resources \
+                        in travelling without fighting wars'
                     sys.exit()
-
-
             army['R'] = int(r)
             army['C'] = int(c)
             p.stdin.write("DONE\n")
             p.stdin.flush()
 
         elif input.find('SNAPSHOT') >= 0:
+            participant_image = cv2.bitwise_and(query_img, full_img)
 
-            participant_image = cv2.bitwise_and(query_img,full_img)
-            
-            #Draw army circle
+            # Draw army circle
             cv2.circle(
-                img= participant_image, 
-                center= (army['C'], army['R']), 
-                radius= int(army['resource']/r2r_ratio),
-                color= [255,255,255], 
-                thickness=-1, 
-                lineType=8, 
+                img=participant_image,
+                center=(army['C'], army['R']),
+                radius=int(army['resource']/r2r_ratio),
+                color=(255, 255, 255),
+                thickness=-1,
+                lineType=8,
                 shift=0)
 
             # Draw enemy circles
             for i in enemy:
                 if enemy[i]['alive'] is True:
                     cv2.circle(
-                        img= participant_image, 
-                        center= (enemy[i]['C'], enemy[i]['R']), 
-                        radius= int(enemy[i]['resource']/r2r_ratio),
-                        color= enemy[i]['colour'],
-                        thickness=-1, 
-                        lineType=8, 
+                        img=participant_image,
+                        center=(enemy[i]['C'], enemy[i]['R']),
+                        radius=int(enemy[i]['resource']/r2r_ratio),
+                        color=enemy[i]['colour'],
+                        thickness=-1,
+                        lineType=8,
                         shift=0)
 
-            participant_image = cv2.bitwise_and(query_img,participant_image)
-            
-            cv2.imwrite('image.jpg',participant_image)
+            participant_image = cv2.bitwise_and(query_img, participant_image)
+            cv2.imwrite('image.jpg', participant_image)
             p.stdin.write("DONE\n")
             p.stdin.flush()
-        
-if __name__ == '__main__': 
+
+if __name__ == '__main__':
     main()
